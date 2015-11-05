@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateShippingCostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,15 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function($table) {
+        Schema::create('shipping_cost', function($table) {
             $table->increments('id');
+            $table->integer('zone_id')->unsigned();
             $table->string('name');
-            $table->string('description');
-            $table->string('short_description');
             $table->decimal('cost', 10, 2);
-            $table->boolean('active')->default(true);
-            $table->boolean('deleted')->default(false);
+            $table->boolean('actived')->defatult(true);
+            $table->boolean('deleted')->defatult(false);
             $table->timestamps();
+            $table->foreign('zone_id')->references('id')->on('zones')->onDelete('cascade');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('products');
+        Schema::drop('shipping_cost');
     }
 }
