@@ -16,7 +16,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('keywords');
-            $table->string('description');
+            $table->string('description',155);
             $table->string('logo');
             $table->string('favicon');
             $table->string('footer');

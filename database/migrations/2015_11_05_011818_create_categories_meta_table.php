@@ -16,7 +16,7 @@ class CreateCategoriesMetaTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->string('title');
-            $table->string('description');
+            $table->string('description',155);
             $table->string('keywords');
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

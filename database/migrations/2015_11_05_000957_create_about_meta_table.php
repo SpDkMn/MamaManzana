@@ -17,7 +17,7 @@ class CreateAboutMetaTable extends Migration
             $table->integer('about_id')->unsigned();
             $table->string('title');
             $table->text('keywords');
-            $table->text('description');
+            $table->string('description',155);
             $table->timestamps();
             $table->foreign('about_id')->references('id')->on('about')->onDelete('cascade');
         });

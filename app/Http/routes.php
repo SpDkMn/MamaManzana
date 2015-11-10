@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('createsetting','SettingController@create');
+Route::post('createsetting','SettingController@store');
+
 Route::get('/', function () {
     return view('welcome');
 });

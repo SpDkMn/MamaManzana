@@ -16,7 +16,7 @@ class CreateProductsMetaTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->string('title');
-            $table->string('description');
+            $table->string('description',155);
             $table->string('keywords');
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
