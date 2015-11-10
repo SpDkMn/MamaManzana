@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\About;
+namespace App\Http\Controllers\Category;
 
 use Illuminate\Http\Request;
 
@@ -8,11 +8,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Image;
-use App\AboutImg as AboutImg;
-use App\Http\Requests\About\Img\CreateAboutImgRequest as CreateAboutImgRequest;
-use App\Http\Requests\About\Img\UpdateAboutImgRequest as UpdateAboutImgRequest;
+use App\CategoryImg as AboutImg;
+use App\Http\Requests\Categories\Img\CreateCategoryImgRequest as CreateCategoryImgRequest;
+use App\Http\Requests\Categories\Img\UpdateCategoryImgRequest as UpdateCategoryImgRequest;
 
-class AboutImgController extends Controller
+class CategoryImgController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,20 +40,20 @@ class AboutImgController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateAboutImgRequest $request)
+    public function store(CreateCategoryImgRequest $request)
     {
-        $aboutImg = new AboutImg;
-        $aboutImg->about_id = $request->about_id;
-        if(Input::hasFile('about_img')){
-            $file = Input::file('about_img');
+        $categoryImg = new CategoryImg;
+        $categoryImg->category_id = $request->category_id;
+        if(Input::hasFile('category_img')){
+            $file = Input::file('category_img');
             $fileName = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
-            $img = Image::make(Input::file('about_img'));
+            $img = Image::make(Input::file('category_img'));
             $imgName = sha1($fileName.time()).'.'.$extension;
-            $img->save('img/about/'.$imgName);
-            $aboutImg->name = $imgName;
+            $img->save('img/category/'.$imgName);
+            $categoryImg->name = $imgName;
         }
-        $aboutImg->save();
+        $categoryImg->save();
     }
 
     /**
@@ -75,18 +75,7 @@ class AboutImgController extends Controller
      */
     public function edit($id)
     {
-        $aboutImg = AboutImg::find($id);
-        $aboutImg->about_id = $request->about_id;
-        if(Input::hasFile('about_img')){
-            $file = Input::file('about_img');
-            $fileName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $img = Image::make(Input::file('about_img'));
-            $imgName = sha1($fileName.time()).'.'.$extension;
-            $img->save('img/setting/'.$imgName);
-            $aboutImg->name = $imgName;
-        }
-        $aboutImg->save();
+        //
     }
 
     /**
@@ -96,9 +85,20 @@ class AboutImgController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAboutImgRequest $request, $id)
+    public function update(UpdateCategoryImgRequest $request, $id)
     {
-        //
+        $categoryImg = CategoryImg::find($id);
+        $categoryImg->category_id = $request->category_id;
+        if(Input::hasFile('category_img')){
+            $file = Input::file('category_img');
+            $fileName = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $img = Image::make(Input::file('category_img'));
+            $imgName = sha1($fileName.time()).'.'.$extension;
+            $img->save('img/category/'.$imgName);
+            $categoryImg->name = $imgName;
+        }
+        $categoryImg->save();
     }
 
     /**
@@ -109,7 +109,7 @@ class AboutImgController extends Controller
      */
     public function destroy($id)
     {
-        $aboutImg = AboutImg::find($id);
-        $aboutImg->delete();
+        $categoryImg = CategoryImg::find($id);
+        $categoryImg->delete();
     }
 }

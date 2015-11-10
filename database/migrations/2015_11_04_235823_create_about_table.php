@@ -14,11 +14,11 @@ class CreateAboutTable extends Migration
     {
         Schema::create('about', function($table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->text('about');
-            $table->text('mission');
-            $table->text('vision');
-            $table->text('values');
+            $table->text('mission')->nullable();
+            $table->text('vision')->nullable();
+            $table->text('values')->nullable();
             $table->timestamps();
         });
     }
