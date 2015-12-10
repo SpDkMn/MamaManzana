@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Categories\Data;
+namespace App\Http\Requests\Products\Data;
 
 use App\Http\Requests\Request;
 
-class UpdateCategoryRequest extends Request
+class UpdateProductRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,6 +27,7 @@ class UpdateCategoryRequest extends Request
             'name' = 'required|min:3',
             'description' => 'required|min:3',
             'short_description' => 'required|min:3',
+            'cost' => 'required|numeric',
             'active' => 'required'
         ];
     }

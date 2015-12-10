@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Category as Category;
-use App\Http\Requests\Categories\Data\CreateCategoryRequest as CreateCategoryRequest;
-use App\Http\Requests\Categories\Data\UpdateCategoryRequest as UpdateCategoryRequest;
+use App\Product as Product;
+use App\Http\Request\Products\Data\CreateProductRequest as CreateProductRequest;
+use App\Http\Request\Products\Data\UpdateProductRequest as UpdateProductRequest;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,13 +39,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(CreateProductRequest $request)
     {
-        $category = new Category;
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->short_description = $request->short_description;
-        $category->save();
+        $product = new Product;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->short_description = $request->short_description;
+        $product->cost = $request->cost;
+        $product->save();
     }
 
     /**
@@ -77,14 +78,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-        $category = Category::find($id);
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->short_description = $request->short_description;
-        $category->active = $request->active;
-        $category->save();
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->short_description = $request->short_description;
+        $product->cost = $request->cost;
+        $product->active = $request->active;
+        $product->save();
     }
 
     /**
@@ -95,9 +97,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->active = false;
-        $category->deleted = true;
-        $category->save();
+        $product = Product::find($id);
+        $product->active = false;
+        $product->deleted = true;
+        $product->save();
     }
 }

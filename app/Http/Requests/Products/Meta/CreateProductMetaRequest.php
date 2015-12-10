@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Categories\Data;
+namespace App\Http\Requests\Products\Meta;
 
 use App\Http\Requests\Request;
 
-class UpdateCategoryRequest extends Request
+class CreateProductMetaRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,10 @@ class UpdateCategoryRequest extends Request
     public function rules()
     {
         return [
-            'name' = 'required|min:3',
-            'description' => 'required|min:3',
-            'short_description' => 'required|min:3',
-            'active' => 'required'
+            'product_id' => 'required|integer',
+            'title' => 'required|min:3',
+            'keywords' => 'required|min:3',
+            'description' => 'required|min:3|max:155'
         ];
     }
 }

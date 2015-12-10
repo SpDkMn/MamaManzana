@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 
@@ -8,11 +8,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Image;
-use App\CategoryImg as CategoryImg;
-use App\Http\Requests\Categories\Img\CreateCategoryImgRequest as CreateCategoryImgRequest;
-use App\Http\Requests\Categories\Img\UpdateCategoryImgRequest as UpdateCategoryImgRequest;
-
-class CategoryImgController extends Controller
+use App\ProductImg as ProductImg;
+use App\Http\Request\Products\Img\CreateProductImgRequest as CreateProductImgRequest;
+use App\Http\Request\Products\Img\UpdateProductImgRequest as UpdateProductImgRequest;
+class ProductImgController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,20 +39,20 @@ class CategoryImgController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCategoryImgRequest $request)
+    public function store(CreateProductImgRequest $request)
     {
-        $categoryImg = new CategoryImg;
-        $categoryImg->category_id = $request->category_id;
-        if(Input::hasFile('category_img')){
-            $file = Input::file('category_img');
+        $productImg = new ProductImg;
+        $productImg->product_id = $request->product_id;
+        if(Input::hasFile('product_img')){
+            $file = Input::file('product_img');
             $fileName = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
-            $img = Image::make(Input::file('category_img'));
+            $img = Image::make(Input::file('product_img'));
             $imgName = sha1($fileName.time()).'.'.$extension;
-            $img->save('img/category/'.$imgName);
-            $categoryImg->name = $imgName;
+            $img->save('img/product/'.$imgName);
+            $productImg->name = $imgName;
         }
-        $categoryImg->save();
+        $productImg->save();
     }
 
     /**
@@ -85,19 +84,19 @@ class CategoryImgController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryImgRequest $request, $id)
+    public function update(UpdateProductImgRequest $request, $id)
     {
-        $categoryImg = CategoryImg::find($id);
-        if(Input::hasFile('category_img')){
-            $file = Input::file('category_img');
+        $productImg = ProductImg::find($id);
+        if(Input::hasFile('product_img')){
+            $file = Input::file('product_img');
             $fileName = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
-            $img = Image::make(Input::file('category_img'));
+            $img = Image::make(Input::file('product_img'));
             $imgName = sha1($fileName.time()).'.'.$extension;
-            $img->save('img/category/'.$imgName);
-            $categoryImg->name = $imgName;
+            $img->save('img/product/'.$imgName);
+            $productImg->name = $imgName;
         }
-        $categoryImg->save();
+        $productImg->save();
     }
 
     /**
@@ -108,7 +107,7 @@ class CategoryImgController extends Controller
      */
     public function destroy($id)
     {
-        $categoryImg = CategoryImg::find($id);
-        $categoryImg->delete();
+        $productImg = ProductImg::find($id);
+        $productImg->delete();
     }
 }

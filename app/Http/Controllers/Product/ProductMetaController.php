@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Category as Category;
-use App\Http\Requests\Categories\Data\CreateCategoryRequest as CreateCategoryRequest;
-use App\Http\Requests\Categories\Data\UpdateCategoryRequest as UpdateCategoryRequest;
-
-class CategoryController extends Controller
+use App\ProductMeta as ProductMeta;
+use App\Http\Requests\Products\Meta\CreateProductMetaRequest as CreateProductMetaRequest;
+use App\Http\Requests\Products\Meta\UpdateProductMetaRequest as UpdateProductMetaRequest;
+class ProductMetaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,13 +38,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(CreateProductMetaRequest $request)
     {
-        $category = new Category;
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->short_description = $request->short_description;
-        $category->save();
+        $productMeta = new ProductMeta;
+        $productMeta->product_id = $request->product_id;
+        $productMeta->title = $request->title;
+        $productMeta->description = $request->description;
+        $productMeta->keywords = $request->keywords;
+        $productMeta->save();
     }
 
     /**
@@ -77,14 +77,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, $id)
+    public function update(UpdateProductMetaRequest $request, $id)
     {
-        $category = Category::find($id);
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->short_description = $request->short_description;
-        $category->active = $request->active;
-        $category->save();
+        $productMeta = ProductMeta::find($id);
+        $productMeta->title = $request->title;
+        $productMeta->description = $request->description;
+        $productMeta->keywords = $request->keywords;
+        $productMeta->save();
     }
 
     /**
@@ -95,9 +94,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->active = false;
-        $category->deleted = true;
-        $category->save();
+        $productMeta = ProductMeta::find($id);
+        $productMeta->delete();
     }
 }

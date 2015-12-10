@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Category as Category;
-use App\Http\Requests\Categories\Data\CreateCategoryRequest as CreateCategoryRequest;
-use App\Http\Requests\Categories\Data\UpdateCategoryRequest as UpdateCategoryRequest;
+use App\Slider as Slider;
+use App\Http\Requests\Sldiers\CreateSliderRequest as CreateSliderRequest;
+use App\Http\Requests\Sldiers\UpdateSliderRequest as UpdateSliderRequest;
 
-class CategoryController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,13 +39,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(CreateSliderRequest $request)
     {
-        $category = new Category;
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->short_description = $request->short_description;
-        $category->save();
+        $slider = new Slider;
+        $slider->title = $request->title;
+        $slider->action = $request->action;
+        $slider->short_description = $request->short_description;
+        $slider->slug = $request->slug;
+        $slider->save();
     }
 
     /**
@@ -77,14 +78,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, $id)
+    public function update(UpdateSliderRequest $request, $id)
     {
-        $category = Category::find($id);
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->short_description = $request->short_description;
-        $category->active = $request->active;
-        $category->save();
+        $slider = Slider::find($id);
+        $slider->title = $request->title;
+        $slider->action = $request->action;
+        $slider->short_description = $request->short_description;
+        $slider->slug = $request->slug;
+        $slider->active = $request->active;
+        $slider->save();
     }
 
     /**
@@ -95,9 +97,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->active = false;
-        $category->deleted = true;
-        $category->save();
+        $slider = Slider::find($id);
+        $slider->active = false;
+        $slider->deleted = true;
+        $slider->save();
     }
 }

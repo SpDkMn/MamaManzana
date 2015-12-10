@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Categories\Data;
+namespace App\Http\Requests\Sliders;
 
 use App\Http\Requests\Request;
 
-class UpdateCategoryRequest extends Request
+class UpdateSliderRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class UpdateCategoryRequest extends Request
     public function rules()
     {
         return [
-            'name' = 'required|min:3',
-            'description' => 'required|min:3',
+            'title' = 'required|min:3',
+            'action' => 'required|min:3',
             'short_description' => 'required|min:3',
+            'slug' => 'required|min:3',
             'active' => 'required'
         ];
     }
