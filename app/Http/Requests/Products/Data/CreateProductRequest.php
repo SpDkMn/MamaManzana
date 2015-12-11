@@ -24,7 +24,7 @@ class CreateProductRequest extends Request
     public function rules()
     {
         return [
-            'name' = 'required|min:3',
+            'name' => 'required|min:3',
             'description' => 'required|min:3',
             'short_description' => 'required|min:3',
             'cost' => 'required|numeric'

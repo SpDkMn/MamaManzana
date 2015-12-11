@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Categories\Data;
+namespace App\Http\Requests\Contacts;
 
 use App\Http\Requests\Request;
 
-class UpdateCategoryRequest extends Request
+class CreateContactRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,10 @@ class UpdateCategoryRequest extends Request
     public function rules()
     {
         return [
+            'user_id' => 'required|exists:users,id',
             'name' => 'required|min:3',
-            'description' => 'required|min:3',
-            'short_description' => 'required|min:3',
-            'active' => 'required'
+            'email' => 'required|email',
+            'message' => 'required|min:4'
         ];
     }
 }
