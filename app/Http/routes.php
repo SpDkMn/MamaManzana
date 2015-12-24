@@ -11,6 +11,32 @@
 |
 */
 
+Route::get('/',function(){
+  return view('Admin.pages.index');
+});
+Route::get('/inbox',function(){
+  return view('Admin.pages.inbox');
+});
+Route::get('/store/categories',function(){
+  return view('Admin.pages.store.categories.index');
+});
+/*
+Route::get('/',function(){});
+Route::get('/',function(){});
+Route::get('/',function(){});
+Route::get('/',function(){});
+Route::get('/',function(){});
+Route::get('/',function(){});
+
+
+
+/*
+Route::group(['as' => 'admin::'], function () {
+    Route::get('dashboard', ['as' => 'dashboard', function () {
+        // Route named "admin::dashboard"
+    }]);
+});
+
 Route::get('createsetting','SettingController@create');
 Route::post('createsetting','SettingController@store');
 
@@ -47,3 +73,4 @@ Route::get('/nosotros', function () {
 Route::get('/registrate', function () {
     return view('Site.pages.registrate');
 });
+*/
