@@ -106,7 +106,7 @@ use App\Http\Requests;
         class="active"
       @endif
       >
-        <a href="route('admin_users_path')">
+        <a href="{{route('admin_users_path')}}">
           <i class="fa fa-group"></i> <span>Usuarios</span>
         </a>
       </li>
