@@ -59,20 +59,22 @@ Route::group(['as' => 'admin_', 'prefix' => 'admin'], function () {
     'uses'=> ''
   ]);*/
 
-  /*Route::get('sliders',[
+  Route::get('sliders',[
     'as'  => 'sliders_path',
-    'uses'=> ''
-  ]);*/
+    //'uses'=> '',
+    function(){return view('Admin.pages.sliders');}
+  ]);
 
   /*Route::get('users',[
     'as'  => 'users_path',
     'uses'=> ''
   ]);*/
 
-  /*Route::get('settings',[
-    'as'  => '',
-    'uses'=> ''
-  ]);*/
+  Route::get('settings',[
+    'as'  => 'settings_path',
+    //'uses'=> '',
+    function(){return view('Admin.pages.settings');}
+  ]);
 
   Route::get('about-us',[
     'as'  => 'about-us_path',
@@ -86,10 +88,11 @@ Route::group(['as' => 'admin_', 'prefix' => 'admin'], function () {
     function(){return view('Admin.pages.contact_information');}
   ]);
 
-  /*Route::get('social-network',[
-    'as'  => '',
-    'uses'=> ''
-  ]);*/
+  Route::get('social-network',[
+    'as'  => 'social-network_path',
+    //'uses'=> '',
+    function(){return view('Admin.pages.social-network');}
+  ]);
 
   Route::get('menu',[
     'as'  => 'menu_path',

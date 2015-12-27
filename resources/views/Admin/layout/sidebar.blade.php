@@ -77,7 +77,7 @@ use App\Http\Requests;
         class="active"
       @endif
       >
-        <a href="route('admin_sliders_path')">
+        <a href="{{route('admin_sliders_path')}}">
           <i class="fa fa-picture-o"></i> <span>Sliders</span>
         </a>
       </li>
@@ -112,7 +112,8 @@ use App\Http\Requests;
       </li>
       <li class="treeview
       @if(Request::is('admin/about-us') || Request::is('admin/contact-information')
-       || Request::is('admin/menu'))
+       || Request::is('admin/menu') || Request::is('admin/settings')
+       || Request::is('admin/social-network'))
         active
       @endif
       ">
@@ -125,7 +126,7 @@ use App\Http\Requests;
           @if(Request::is('admin/settings'))
             class="active"
           @endif
-          ><a href="#"><i class="fa fa-circle-o"></i> Configuraciones</a></li>
+          ><a href="{{ route('admin_settings_path') }}"><i class="fa fa-circle-o"></i> Configuraciones</a></li>
           <li
           @if(Request::is('admin/about-us'))
             class="active"
@@ -140,7 +141,7 @@ use App\Http\Requests;
           @if(Request::is('admin/social-network'))
             class="active"
           @endif
-          ><a href="#"><i class="fa fa-circle-o"></i> Redes Sociales</a></li>
+          ><a href="{{ route('admin_social-network_path')}}"><i class="fa fa-circle-o"></i> Redes Sociales</a></li>
           <li
           @if(Request::is('admin/menu'))
             class="active"
