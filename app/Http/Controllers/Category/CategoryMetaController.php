@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace MamaManzana\Http\Controllers\Category;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\CategoryMeta as CategoryMeta;
-use App\Http\Requests\Categories\Meta\CreateCategoryMetaRequest as CreateCategoryMetaRequest;
-use App\Http\Requests\Categories\Meta\UpdateCategoryMetaRequest as UpdateCategoryMetaRequest;
+use MamaManzana\CategoryMeta as CategoryMeta;
+use MamaManzana\Http\Requests\Categories\Meta\CreateCategoryMetaRequest as CreateCategoryMetaRequest;
+use MamaManzana\Http\Requests\Categories\Meta\UpdateCategoryMetaRequest as UpdateCategoryMetaRequest;
 
 class CategoryMetaController extends Controller
 {

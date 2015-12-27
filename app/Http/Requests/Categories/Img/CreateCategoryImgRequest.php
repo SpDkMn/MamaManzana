@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Categories\Img;
+namespace MamaManzana\Http\Requests\Categories\Img;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateCategoryImgRequest extends Request
 {

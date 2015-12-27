@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Contacts;
+namespace MamaManzana\Http\Requests\Contacts;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateContactRequest extends Request
 {

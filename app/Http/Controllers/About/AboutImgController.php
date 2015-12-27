@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\About;
+namespace MamaManzana\Http\Controllers\About;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
 use Image;
-use App\AboutImg as AboutImg;
-use App\Http\Requests\About\Img\CreateAboutImgRequest as CreateAboutImgRequest;
-use App\Http\Requests\About\Img\UpdateAboutImgRequest as UpdateAboutImgRequest;
+use MamaManzana\AboutImg as AboutImg;
+use MamaManzana\Http\Requests\About\Img\CreateAboutImgRequest as CreateAboutImgRequest;
+use MamaManzana\Http\Requests\About\Img\UpdateAboutImgRequest as UpdateAboutImgRequest;
 
 class AboutImgController extends Controller
 {

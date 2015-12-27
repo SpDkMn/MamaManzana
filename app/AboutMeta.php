@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MamaManzana;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class AboutMeta extends Model
 
     public function about()
     {
-        return $this->belongsTo('App\About');
+        return $this->belongsTo('MamaManzana\About');
     }
 }

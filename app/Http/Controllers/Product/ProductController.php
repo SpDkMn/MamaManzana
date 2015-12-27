@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace MamaManzana\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\Product as Product;
-use App\Http\Request\Products\Data\CreateProductRequest as CreateProductRequest;
-use App\Http\Request\Products\Data\UpdateProductRequest as UpdateProductRequest;
+use MamaManzana\Product as Product;
+use MamaManzana\Http\Request\Products\Data\CreateProductRequest as CreateProductRequest;
+use MamaManzana\Http\Request\Products\Data\UpdateProductRequest as UpdateProductRequest;
 
 class ProductController extends Controller
 {

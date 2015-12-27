@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MamaManzana;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +10,11 @@ class Product extends Model
 
     public function meta()
     {
-        return $this->hasOne('App\ProductMeta');
+        return $this->hasOne('MamaManzana\ProductMeta');
     }
 
     public function img()
     {
-        return $this->hasOne('App\ProductImg');
+        return $this->hasOne('MamaManzana\ProductImg');
     }
 }

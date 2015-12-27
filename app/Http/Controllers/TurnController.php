@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\Turn as Turn;
-use App\Http\Requests\Turns\CreateTurnRequest as CreateTurnRequest;
-use App\Http\Requests\Turns\UpdateTurnRequest as UpdateTurnRequest;
+use MamaManzana\Turn as Turn;
+use MamaManzana\Http\Requests\Turns\CreateTurnRequest as CreateTurnRequest;
+use MamaManzana\Http\Requests\Turns\UpdateTurnRequest as UpdateTurnRequest;
 
 class TurnController extends Controller
 {

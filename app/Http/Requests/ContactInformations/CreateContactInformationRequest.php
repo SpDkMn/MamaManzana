@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\ContactInformations;
+namespace MamaManzana\Http\Requests\ContactInformations;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateContactInformationRequest extends Request
 {

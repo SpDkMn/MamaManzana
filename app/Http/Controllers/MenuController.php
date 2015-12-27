@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\Menu as Menu;
-use App\Http\Requests\Menus\CreateMenuRequest as CreateMenuRequest;
-use App\Http\Requests\Menus\UpdateMenuRequest as UpdateMenuRequest;
+use MamaManzana\Menu as Menu;
+use MamaManzana\Http\Requests\Menus\CreateMenuRequest as CreateMenuRequest;
+use MamaManzana\Http\Requests\Menus\UpdateMenuRequest as UpdateMenuRequest;
 
 class MenuController extends Controller
 {

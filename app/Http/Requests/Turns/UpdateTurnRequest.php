@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Turns;
+namespace MamaManzana\Http\Requests\Turns;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateTurnRequest extends Request
 {

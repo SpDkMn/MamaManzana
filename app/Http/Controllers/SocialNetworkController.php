@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\SocialNetwork as SocialNetwork;
-use App\Http\Requests\SocialNetworks\CreateSocialNetworkRequest as CreateSocialNetworkRequest;
-use App\Http\Requests\SocialNetworks\UpdateSocialNetworkRequest as UpdateSocialNetworkRequest;
+use MamaManzana\SocialNetwork as SocialNetwork;
+use MamaManzana\Http\Requests\SocialNetworks\CreateSocialNetworkRequest as CreateSocialNetworkRequest;
+use MamaManzana\Http\Requests\SocialNetworks\UpdateSocialNetworkRequest as UpdateSocialNetworkRequest;
 
 class SocialNetworkController extends Controller
 {

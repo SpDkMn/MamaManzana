@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\Slider as Slider;
-use App\Http\Requests\Sldiers\CreateSliderRequest as CreateSliderRequest;
-use App\Http\Requests\Sldiers\UpdateSliderRequest as UpdateSliderRequest;
+use MamaManzana\Slider as Slider;
+use MamaManzana\Http\Requests\Sldiers\CreateSliderRequest as CreateSliderRequest;
+use MamaManzana\Http\Requests\Sldiers\UpdateSliderRequest as UpdateSliderRequest;
 
 class SliderController extends Controller
 {

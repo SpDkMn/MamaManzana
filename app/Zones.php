@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MamaManzana;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,18 +9,18 @@ class Zones extends Model
     protected $table = 'zones';
 
     public function cities(){
-    	$this->belongsTo('App\City');
+    	$this->belongsTo('MamaManzana\City');
     }
 
     public function states(){
-    	$this->belongsTo('App\States');
+    	$this->belongsTo('MamaManzana\States');
     }
 
     public function counties(){
-    	$this->belongsTo('App\Country');
+    	$this->belongsTo('MamaManzana\Country');
     }
 
     public function shippingCosts(){
-    	$this->hasMany('App\ShippingCost');
+    	$this->hasMany('MamaManzana\ShippingCost');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MamaManzana;
 
 use Illuminate\Database\Eloquent\Model;
 

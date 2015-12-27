@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace MamaManzana\Http\Controllers\Category;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
 use Image;
-use App\CategoryImg as CategoryImg;
-use App\Http\Requests\Categories\Img\CreateCategoryImgRequest as CreateCategoryImgRequest;
-use App\Http\Requests\Categories\Img\UpdateCategoryImgRequest as UpdateCategoryImgRequest;
+use MamaManzana\CategoryImg as CategoryImg;
+use MamaManzana\Http\Requests\Categories\Img\CreateCategoryImgRequest as CreateCategoryImgRequest;
+use MamaManzana\Http\Requests\Categories\Img\UpdateCategoryImgRequest as UpdateCategoryImgRequest;
 
 class CategoryImgController extends Controller
 {

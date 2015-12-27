@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Products\Meta;
+namespace MamaManzana\Http\Requests\Products\Meta;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateProductMetaRequest extends Request
 {

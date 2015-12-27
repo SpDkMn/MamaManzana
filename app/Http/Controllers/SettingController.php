@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
 use Image;
-use App\Setting as Setting;
-use App\Http\Requests\Settings\CreateSettingRequest as CreateSettingRequest;
-use App\Http\Requests\Settings\UpdateSettingRequest as UpdateSettingRequest;
+use MamaManzana\Setting as Setting;
+use MamaManzana\Http\Requests\Settings\CreateSettingRequest as CreateSettingRequest;
+use MamaManzana\Http\Requests\Settings\UpdateSettingRequest as UpdateSettingRequest;
 
 class SettingController extends Controller
 {

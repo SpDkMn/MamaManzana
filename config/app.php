@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,10 +140,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        MamaManzana\Providers\AppServiceProvider::class,
+        MamaManzana\Providers\AuthServiceProvider::class,
+        MamaManzana\Providers\EventServiceProvider::class,
+        MamaManzana\Providers\RouteServiceProvider::class,
 
         Intervention\Image\ImageServiceProviderLaravel5::class,
         Laravel\Socialite\SocialiteServiceProvider::class,

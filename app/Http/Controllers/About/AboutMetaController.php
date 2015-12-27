@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\About;
+namespace MamaManzana\Http\Controllers\About;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\AboutMeta as AboutMeta;
-use App\Http\Requests\About\Meta\CreateAboutMetaRequest as CreateAboutMetaRequest;
-use App\Http\Requests\About\Meta\UpdateAboutMetaRequest as UpdateAboutMetaRequest;
+use MamaManzana\AboutMeta as AboutMeta;
+use MamaManzana\Http\Requests\About\Meta\CreateAboutMetaRequest as CreateAboutMetaRequest;
+use MamaManzana\Http\Requests\About\Meta\UpdateAboutMetaRequest as UpdateAboutMetaRequest;
 
 class AboutMetaController extends Controller
 {

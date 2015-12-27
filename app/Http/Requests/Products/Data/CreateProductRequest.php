@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Products\Data;
+namespace MamaManzana\Http\Requests\Products\Data;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateProductRequest extends Request
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Zones;
+namespace MamaManzana\Http\Requests\Zones;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateZonesRequest extends Request
 {

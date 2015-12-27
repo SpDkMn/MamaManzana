@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MamaManzana;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -39,6 +39,6 @@ class User extends Model implements AuthenticatableContract,
 
     public function contacts()
     {
-        return $this->hasMany('App\Contact');
+        return $this->hasMany('MamaManzana\Contact');
     }
 }

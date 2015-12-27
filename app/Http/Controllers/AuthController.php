@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Socialite;
-use App\User as User;
+use MamaManzana\User as User;
 use Illuminate\Support\Facades\Auth as Auth;
 
 class AuthController extends Controller {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\SpecialSchedules;
+namespace MamaManzana\Http\Requests\SpecialSchedules;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateSpecialScheduleRequest extends Request
 {

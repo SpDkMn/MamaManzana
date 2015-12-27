@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Categories\Data;
+namespace MamaManzana\Http\Requests\Categories\Data;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateCategoryRequest extends Request
 {

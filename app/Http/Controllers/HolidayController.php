@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\Holiday as Holiday;
-use App\Http\Requests\Holidays\CreateHolidayRequest as CreateHolidayRequest;
-use App\Http\Requests\Holidays\UpdateHolidayRequest as UpdateHolidayRequest;
+use MamaManzana\Holiday as Holiday;
+use MamaManzana\Http\Requests\Holidays\CreateHolidayRequest as CreateHolidayRequest;
+use MamaManzana\Http\Requests\Holidays\UpdateHolidayRequest as UpdateHolidayRequest;
 
 class HolidayController extends Controller
 {

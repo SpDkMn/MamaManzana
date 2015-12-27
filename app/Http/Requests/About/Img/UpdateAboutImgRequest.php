@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\About\Img;
+namespace MamaManzana\Http\Requests\About\Img;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateAboutImgRequest extends Request
 {

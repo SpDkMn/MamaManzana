@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Categories\Meta;
+namespace MamaManzana\Http\Requests\Categories\Meta;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateCategoryMetaRequest extends Request
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace MamaManzana\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
 use Image;
-use App\ProductImg as ProductImg;
-use App\Http\Request\Products\Img\CreateProductImgRequest as CreateProductImgRequest;
-use App\Http\Request\Products\Img\UpdateProductImgRequest as UpdateProductImgRequest;
+use MamaManzana\ProductImg as ProductImg;
+use MamaManzana\Http\Request\Products\Img\CreateProductImgRequest as CreateProductImgRequest;
+use MamaManzana\Http\Request\Products\Img\UpdateProductImgRequest as UpdateProductImgRequest;
 class ProductImgController extends Controller
 {
     /**

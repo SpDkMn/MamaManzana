@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Menus;
+namespace MamaManzana\Http\Requests\Menus;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateMenuRequest extends Request
 {

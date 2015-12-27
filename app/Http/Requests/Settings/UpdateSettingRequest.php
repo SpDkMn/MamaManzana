@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Settings;
+namespace MamaManzana\Http\Requests\Settings;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateSettingRequest extends Request
 {

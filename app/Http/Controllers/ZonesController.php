@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\Zones as Zones;
-use App\Http\Requests\Zones\CreateZonesRequest as CreateZonesRequest;
-use App\Http\Requests\Zones\UpdateZonesRequest as UpdateZonesRequest;
+use MamaManzana\Zones as Zones;
+use MamaManzana\Http\Requests\Zones\CreateZonesRequest as CreateZonesRequest;
+use MamaManzana\Http\Requests\Zones\UpdateZonesRequest as UpdateZonesRequest;
 
 class ZonesController extends Controller
 {

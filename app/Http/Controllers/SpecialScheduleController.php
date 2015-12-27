@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\SpecialSchedule as SpecialSchedule;
-use App\Http\Requests\SpecialSchedules\CreateSpecialScheduleRequest as CreateSpecialScheduleRequest;
-use App\Http\Requests\SpecialSchedules\UpdateSpecialScheduleRequest as UpdateSpecialScheduleRequest;
+use MamaManzana\SpecialSchedule as SpecialSchedule;
+use MamaManzana\Http\Requests\SpecialSchedules\CreateSpecialScheduleRequest as CreateSpecialScheduleRequest;
+use MamaManzana\Http\Requests\SpecialSchedules\UpdateSpecialScheduleRequest as UpdateSpecialScheduleRequest;
 class SpecialScheduleController extends Controller
 {
     /**

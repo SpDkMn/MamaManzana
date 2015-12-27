@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\ShippingCosts;
+namespace MamaManzana\Http\Requests\ShippingCosts;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateShippingCostRequest extends Request
 {

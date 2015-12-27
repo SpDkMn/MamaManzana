@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\SocialNetworks;
+namespace MamaManzana\Http\Requests\SocialNetworks;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateSocialNetworkRequest extends Request
 {

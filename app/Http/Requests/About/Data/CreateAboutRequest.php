@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\About\Data;
+namespace MamaManzana\Http\Requests\About\Data;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateAboutRequest extends Request
 {

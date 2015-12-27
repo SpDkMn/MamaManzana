@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\ShippingCost as ShippingCost;
-use App\Http\Requests\ShippingCosts\CreateShippingCostRequest as CreateShippingCostRequest;
-use App\Http\Requests\ShippingCosts\UpdateShippingCostRequest as UpdateShippingCostRequest;
+use MamaManzana\ShippingCost as ShippingCost;
+use MamaManzana\Http\Requests\ShippingCosts\CreateShippingCostRequest as CreateShippingCostRequest;
+use MamaManzana\Http\Requests\ShippingCosts\UpdateShippingCostRequest as UpdateShippingCostRequest;
 
 class ShippingCostController extends Controller
 {

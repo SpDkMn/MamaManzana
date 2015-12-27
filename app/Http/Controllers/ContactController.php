@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\Contact as Contact;
-use App\Setting as Setting;
-use App\ContactInformation as ContactInformation;
-use App\Http\Requests\Contacts\CreateContactRequest as CreateContactRequest;
-use App\Http\Requests\Contacts\UpdateContactRequest as UpdateContactRequest;
+use MamaManzana\Contact as Contact;
+use MamaManzana\Setting as Setting;
+use MamaManzana\ContactInformation as ContactInformation;
+use MamaManzana\Http\Requests\Contacts\CreateContactRequest as CreateContactRequest;
+use MamaManzana\Http\Requests\Contacts\UpdateContactRequest as UpdateContactRequest;
 
 class ContactController extends Controller
 {

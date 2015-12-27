@@ -3,7 +3,7 @@
 @section('css')
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('plugins/iCheck/flat/blue.css')}}">
-@endsection
+@stop
 
 @section('content')
         <!-- Content Header (Page header) -->
@@ -22,12 +22,12 @@
         <section class="content">
           <div class="row">
             <div class="col-md-3">
-              <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Redactar</a>
+              <a href="{{ route('admin_inbox_compose_path') }}" class="btn btn-primary btn-block margin-bottom">Redactar</a>
               <div class="box box-solid">
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="#"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Enviados</a></li>
+                    <li><a href="{{ route('admin_inbox_path') }}"><i class="fa fa-envelope-o"></i> Enviados</a></li>
                     <li><a href="#"><i class="fa fa-trash-o"></i> Papelera</a></li>
                   </ul>
                 </div><!-- /.box-body -->
@@ -68,7 +68,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 1)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"></td>
                           <td class="mailbox-date">5 mins ago</td>
@@ -76,7 +76,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 2)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
                           <td class="mailbox-date">28 mins ago</td>
@@ -84,7 +84,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 3)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
                           <td class="mailbox-date">11 hours ago</td>
@@ -92,7 +92,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 4)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"></td>
                           <td class="mailbox-date">15 hours ago</td>
@@ -100,7 +100,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 5)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
                           <td class="mailbox-date">Yesterday</td>
@@ -108,7 +108,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 6)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
                           <td class="mailbox-date">2 days ago</td>
@@ -116,7 +116,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 7)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
                           <td class="mailbox-date">2 days ago</td>
@@ -124,7 +124,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 8)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"></td>
                           <td class="mailbox-date">2 days ago</td>
@@ -132,7 +132,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 9)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"></td>
                           <td class="mailbox-date">2 days ago</td>
@@ -140,7 +140,7 @@
                         <tr>
                           <td><input type="checkbox"></td>
                           <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                          <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                          <td class="mailbox-name"><a href="{{ route('admin_inbox_read_path', 10)}}">Alexander Pierce</a></td>
                           <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...</td>
                           <td class="mailbox-attachment"></td>
                           <td class="mailbox-date">2 days ago</td>
@@ -212,7 +212,7 @@
             </div><!-- /.col -->
           </div><!-- /.row -->
         </section><!-- /.content -->
-@endsection
+@stop
 
 @section('script-src-2')
     <!-- iCheck -->
@@ -264,4 +264,4 @@
       });
     </script>
 
-@endsection
+@stop

@@ -4,70 +4,80 @@ use App\Http\Requests;
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
-    <!-- Sidebar user panel -->
-    <div class="user-panel">
-      <div class="pull-left image">
-        <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-      </div>
-      <div class="pull-left info">
-        <p>Alexander Pierce</p>
-        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-      </div>
-    </div>
-    <!-- search form -->
-    <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
-        <span class="input-group-btn">
-          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-        </span>
-      </div>
-    </form>
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">Panel Administrativo</li>
       <li
-      @if(Request::is('/') || Request::is('dashboard'))
+      @if(Request::is('admin') || Request::is('admin/dashboard'))
         class="active"
       @endif
       >
-        <a href="/">
+        <a href="{{route('admin_dashboard_path')}}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-      <li class="treeview">
+      <li class="treeview
+      @if(Request::is('admin/orders') || Request::is('admin/orders-status'))
+        active
+      @endif
+      >
+      ">
         <a href="#">
           <i class="fa fa-shopping-cart"></i>
           <span>Pedidos</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Pedidos</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Estado de pedidos</a></li>
+          <li
+          @if(Request::is('admin/orders') )
+            class="active"
+          @endif
+          ><a href="route('admin_orders_path')"><i class="fa fa-circle-o"></i> Pedidos</a></li>
+          <li
+          @if(Request::is('admin/orders-status') )
+            class="active"
+          @endif
+          ><a href="route('admin_orders-status_path')"><i class="fa fa-circle-o"></i> Estado de pedidos</a></li>
         </ul>
       </li>
       <li
-      @if(Request::is('inbox'))
+      @if(Request::is('admin/inbox/*') || Request::is('admin/inbox'))
         class="active"
       @endif
       >
-        <a href="inbox">
+        <a href="{{ route('admin_inbox_path') }}">
           <i class="fa fa-envelope"></i> <span>Mensajes</span>
           <small class="label pull-right bg-yellow">12</small>
         </a>
       </li>
-      <li class="treeview">
+      <li class="treeview
+      @if(Request::is('admin/categories') || Request::is('admin/products'))
+        active
+      @endif
+       ">
         <a href="#">
           <i class="fa fa-cubes"></i> <span>Almacen</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Categorias</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Productos</a></li>
+          <li
+          @if(Request::is('admin/categories'))
+            class="active"
+          @endif
+          ><a href="{{ route('admin_categories_path') }}"><i class="fa fa-circle-o"></i> Categorias</a></li>
+          <li
+          @if(Request::is('admin/products'))
+            class="active"
+          @endif
+          ><a href="route('admin_products_path')"><i class="fa fa-circle-o"></i> Productos</a></li>
         </ul>
       </li>
-      <li>
-        <a href="#">
+      <li
+      @if(Request::is('admin/sliders'))
+        class="active"
+      @endif
+      >
+        <a href="route('admin_sliders_path')">
           <i class="fa fa-picture-o"></i> <span>Sliders</span>
         </a>
       </li>
@@ -91,22 +101,51 @@ use App\Http\Requests;
           </li>
         </ul>
       </li>
-      <li>
-        <a href="#">
+      <li
+      @if(Request::is('admin/users'))
+        class="active"
+      @endif
+      >
+        <a href="route('admin_users_path')">
           <i class="fa fa-group"></i> <span>Usuarios</span>
         </a>
       </li>
-      <li class="treeview">
+      <li class="treeview
+      @if(Request::is('admin/about-us') || Request::is('admin/contact-information')
+       || Request::is('admin/menu'))
+        active
+      @endif
+      ">
         <a href="#">
           <i class="fa fa-gears"></i> <span>Configuraciones</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Configuraciones</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Acerca de nosotros</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Información de contacto</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Redes Sociales</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Menu</a></li>
+          <li
+          @if(Request::is('admin/settings'))
+            class="active"
+          @endif
+          ><a href="#"><i class="fa fa-circle-o"></i> Configuraciones</a></li>
+          <li
+          @if(Request::is('admin/about-us'))
+            class="active"
+          @endif
+          ><a href="{{ route('admin_about-us_path') }}"><i class="fa fa-circle-o"></i> Acerca de nosotros</a></li>
+          <li
+          @if(Request::is('admin/contact-information'))
+            class="active"
+          @endif
+          ><a href="{{ route('admin_contact-information_path')}}"><i class="fa fa-circle-o"></i> Información de contacto</a></li>
+          <li
+          @if(Request::is('admin/social-network'))
+            class="active"
+          @endif
+          ><a href="#"><i class="fa fa-circle-o"></i> Redes Sociales</a></li>
+          <li
+          @if(Request::is('admin/menu'))
+            class="active"
+          @endif
+          ><a href="{{ route('admin_menu_path') }}"><i class="fa fa-circle-o"></i> Menu</a></li>
         </ul>
       </li>
     </ul>

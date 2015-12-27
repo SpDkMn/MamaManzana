@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use MamaManzana\Http\Requests;
+use MamaManzana\Http\Controllers\Controller;
 
-use App\Status as Status;
-use App\Http\Requests\Statuses\CreateStatusRequest as CreateStatusRequest;
-use App\Http\Requests\Statuses\UpdateStatusRequest as UpdateStatusRequest;
+use MamaManzana\Status as Status;
+use MamaManzana\Http\Requests\Statuses\CreateStatusRequest as CreateStatusRequest;
+use MamaManzana\Http\Requests\Statuses\UpdateStatusRequest as UpdateStatusRequest;
 
 class StatusController extends Controller
 {

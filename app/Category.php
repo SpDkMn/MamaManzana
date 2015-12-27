@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MamaManzana;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,12 +10,12 @@ class Category extends Model
 
     public function meta()
     {
-        return $this->hasOne('App\CategoryMeta');
+        return $this->hasOne('MamaManzana\CategoryMeta');
     }
 
     public function img()
     {
-        return $this->hasOne('App\CategoryImg');
+        return $this->hasOne('MamaManzana\CategoryImg');
     }
 
 

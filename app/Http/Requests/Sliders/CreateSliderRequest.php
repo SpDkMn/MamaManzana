@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Sliders;
+namespace MamaManzana\Http\Requests\Sliders;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateSliderRequest extends Request
 {

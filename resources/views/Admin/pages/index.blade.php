@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-@endsection
+@stop
 
 @section('content')
         <!-- Content Header (Page header) -->
@@ -452,7 +452,7 @@
           </div><!-- /.row (main row) -->
 
         </section><!-- /.content -->
-@endsection
+@stop
 
 @section('jquery-ui')
     <!-- jQuery UI 1.11.4 -->
@@ -461,7 +461,7 @@
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
-@endsection
+@stop
 
 @section('script-src')
     <!-- Morris.js charts -->
@@ -483,9 +483,9 @@
     <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Slimscroll -->
     <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-@endsection
+@stop
 
 @section('script-src-2')
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
-@endsection
+@stop

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\statuses;
+namespace MamaManzana\Http\Requests\statuses;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class UpdateStatusRequest extends Request
 {

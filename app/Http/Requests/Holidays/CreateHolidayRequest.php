@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Holidays;
+namespace MamaManzana\Http\Requests\Holidays;
 
-use App\Http\Requests\Request;
+use MamaManzana\Http\Requests\Request;
 
 class CreateHolidayRequest extends Request
 {
