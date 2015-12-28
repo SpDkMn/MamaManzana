@@ -64,8 +64,33 @@ Route::group(['as' => 'admin_', 'prefix' => 'admin'], function () {
 
   Route::get('settings',[
     'as'  => 'settings_path',
-    //'uses'=> '',
-    function(){return view('Admin.pages.settings');}
+    'uses'=> 'SettingController@index',
+    //function(){return view('Admin.pages.settings');}
+  ]);
+
+  Route::patch('settings',[
+    'as'  => 'setting_patch_path',
+    'uses'=> 'SettingController@patchSetting',
+  ]);
+
+  Route::patch('settings_meta',[
+    'as'  => 'setting_meta_patch_path',
+    'uses'=> 'SettingController@patchSettingMeta',
+  ]);
+
+  Route::patch('settings_logo',[
+    'as'  => 'setting_logo_patch_path',
+    'uses'=> 'SettingController@patchLogo',
+  ]);
+
+  Route::patch('settings_footer',[
+    'as'  => 'setting_footer_patch_path',
+    'uses'=> 'SettingController@patchFooter',
+  ]);
+
+  Route::patch('settings_favicon',[
+    'as'  => 'setting_favicon_patch_path',
+    'uses'=> 'SettingController@patchFavicon',
   ]);
 
   Route::get('about-us',[

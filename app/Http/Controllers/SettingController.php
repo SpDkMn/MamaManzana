@@ -12,6 +12,8 @@ use Image;
 use MamaManzana\Setting as Setting;
 use MamaManzana\Http\Requests\Settings\CreateSettingRequest as CreateSettingRequest;
 use MamaManzana\Http\Requests\Settings\UpdateSettingRequest as UpdateSettingRequest;
+use MamaManzana\Http\Requests\Settings\SettingsRequest as SettingsRequest;
+use MamaManzana\Http\Requests\Settings\SettingsMetaRequest as SettingsMetaRequest;
 
 class SettingController extends Controller
 {
@@ -22,7 +24,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        $setting = Setting::find(1);
+        return view('Admin.pages.settings',$setting);
     }
 
     /**
@@ -106,6 +109,78 @@ class SettingController extends Controller
     public function edit($id)
     {
         //
+    }
+
+    public function patchSetting(SettingsRequest $request){
+      $setting = Setting::find(1);
+
+      $setting->email_order = $request->email_order;
+      $setting->phrase = $request->phrase;
+
+      $setting->save();
+      return view('Admin.pages.settings',$setting);
+    }
+
+    public function patchSettingMeta(SettingsMetaRequest $request){
+      $setting = Setting::find(1);
+
+      $setting->title = $request->title;
+      $setting->keywords = $request->keywords;
+      $setting->description = $request->description;
+
+      $setting->save();
+      return view('Admin.pages.settings',$setting);
+    }
+
+    public function patchLogo(Request $request){
+      $setting = Setting::find(1);
+
+      if(Input::hasFile('logo')){
+          $file = Input::file('logo');
+          $fileName = $file->getClientOriginalName();
+          $extension = $file->getClientOriginalExtension();
+          $img = Image::make(Input::file('logo'));
+          $imgName = sha1($fileName.time()).'.'.$extension;
+          $img->save('img/setting/'.$imgName);
+          $setting->logo = $imgName;
+      }
+
+      $setting->save();
+      return view('Admin.pages.settings',$setting);
+    }
+
+    public function patchFooter(Request $request){
+      $setting = Setting::find(1);
+
+      if(Input::hasFile('footer')){
+          $file = Input::file('footer');
+          $fileName = $file->getClientOriginalName();
+          $extension = $file->getClientOriginalExtension();
+          $img = Image::make(Input::file('footer'));
+          $imgName = sha1($fileName.time()).'.'.$extension;
+          $img->save('img/setting/'.$imgName);
+          $setting->footer = $imgName;
+      }
+
+      $setting->save();
+      return view('Admin.pages.settings',$setting);
+    }
+
+    public function patchFavicon(Request $request){
+      $setting = Setting::find(1);
+
+      if(Input::hasFile('favicon')){
+          $file = Input::file('favicon');
+          $fileName = $file->getClientOriginalName();
+          $extension = $file->getClientOriginalExtension();
+          $img = Image::make(Input::file('favicon'));
+          $imgName = sha1($fileName.time()).'.'.$extension;
+          $img->save('img/setting/'.$imgName);
+          $setting->favicon = $imgName;
+      }
+
+      $setting->save();
+      return view('Admin.pages.settings',$setting);
     }
 
     /**

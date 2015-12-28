@@ -169,7 +169,7 @@
           <h4 class="subtitle">INGREDIENTES</h4>
         </div>
       </div>
-      <img class="img-responsive" src="app/img/imgmsj.png" alt="">
+      <img class="img-responsive" src="app/img/footer.png" alt="">
     </div>
   </section>
   <div class="up-effect">
