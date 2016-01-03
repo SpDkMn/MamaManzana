@@ -27,9 +27,12 @@ Route::get('/categoria', function () {
 Route::get('/contacto', function () {
     return view('Site.pages.contacto');
 });
-Route::get('/', function () {
-    return view('Site.pages.index');
-});
+
+Route::get('/', [
+  'as'  =>  'home_path',
+  function () {return view('Site.pages.index');}
+]);
+
 Route::get('/login', function () {
     return view('Site.pages.login');
 });

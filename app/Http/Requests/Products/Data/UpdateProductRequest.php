@@ -24,11 +24,13 @@ class UpdateProductRequest extends Request
     public function rules()
     {
         return [
-            'name' = 'required|min:3',
+            'name' => 'required|min:3',
             'description' => 'required|min:3',
             'short_description' => 'required|min:3',
             'cost' => 'required|numeric',
-            'active' => 'required'
+            'title' => 'required|min:3',
+            'keywords' => 'required|min:3',
+            'meta_description' => 'required|min:3|max:155'
         ];
     }
 }

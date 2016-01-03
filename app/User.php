@@ -41,4 +41,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('MamaManzana\Contact');
     }
+
+    public function isAdmin()
+    {
+      return ($this->admin == 1);
+    }
 }

@@ -24,7 +24,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
+                  <table id="users-data" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>Id</th>
@@ -33,56 +33,10 @@
                         <th>Sexo</th>
                         <th>R. Edad</th>
                         <th>Foto</th>
+                        <th>Registrado</th>
                         <th>Ultima sesión</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Oscar Shimabukuro</td>
-                        <td>Oscar@Shimabukuro.com</td>
-                        <td>Indefinido :v</td>
-                        <td>24</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td>06/06/06 06:06:06</td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Oscar Shimabukuro</td>
-                        <td>Oscar@Shimabukuro.com</td>
-                        <td>Indefinido :v</td>
-                        <td>24</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td>06/06/06 06:06:06</td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Oscar Shimabukuro</td>
-                        <td>Oscar@Shimabukuro.com</td>
-                        <td>Indefinido :v</td>
-                        <td>24</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td>06/06/06 06:06:06</td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Oscar Shimabukuro</td>
-                        <td>Oscar@Shimabukuro.com</td>
-                        <td>Indefinido :v</td>
-                        <td>24</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td>06/06/06 06:06:06</td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Oscar Shimabukuro</td>
-                        <td>Oscar@Shimabukuro.com</td>
-                        <td>Indefinido :v</td>
-                        <td>24</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td>06/06/06 06:06:06</td>
-                      </tr>
-                    </tbody>
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -102,8 +56,22 @@
 
 @section('script-src-1')
     <script>
-      $(function () {
-        $('#example1').DataTable();
-      });
-    </script>
+$(function() {
+    $('#users-data').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('admin_users_data_path') !!}',
+        columns: [
+          { data: 'id', name: 'id' },
+          { data: 'name', name: 'name' },
+          { data: 'email', name: 'email' },
+          { data: 'gender', name: 'gender' },
+          { data: 'age_range', name: 'age_range' },
+          { data: 'photo', name: 'photo' },
+          { data: 'created_at', name: 'created_at' },
+          { data: 'updated_at', name: 'updated_at' }
+        ]
+    });
+});
+</script>
 @endsection

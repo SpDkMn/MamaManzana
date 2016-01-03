@@ -8,6 +8,8 @@ use MamaManzana\Http\Requests;
 use MamaManzana\Http\Controllers\Controller;
 
 use MamaManzana\About as About;
+use MamaManzana\AboutImg as AboutImg;
+use MamaManzana\AboutMeta as AboutMeta;
 use MamaManzana\Http\Requests\About\Data\CreateAboutRequest as CreateAboutRequest;
 use MamaManzana\Http\Requests\About\Data\UpdateAboutRequest as UpdateAboutRequest;
 
@@ -20,7 +22,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        //
+      $about = About::with('meta','img')->get();
+      return view('Admin.pages.about', ['about' => $about[0]]);
     }
 
     /**
@@ -91,9 +94,9 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAboutRequest $request, $id)
+    public function update(UpdateAboutRequest $request)
     {
-        $about = About::find($id);
+        $about = About::find(1);
         if (isset($request->title)){
             $about->title = $request->title;
         }
@@ -112,6 +115,8 @@ class AboutController extends Controller
 
         $about->about = $request->about;
         $about->save();
+
+        return redirect('admin/about-us')->with('status_data', 'Datos de contactos actualizados correctamente.');
     }
 
     /**

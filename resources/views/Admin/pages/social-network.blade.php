@@ -34,14 +34,17 @@
                   <h3 class="box-title">Redes Sociales</h3>
                 </div>
                 <div class="box-body">
+                  <form action="{{ route('admin_social-network_patch_path')}}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('PATCH') }}
                   <div class="form-group col-sm-12">
-                  	<label for="facebook" class="col-sm-1 control-label"><a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a></label>
+                  	<label for="url" class="col-sm-1 control-label"><a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a></label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="facebook" placeholder="Ingresa tu dirección de Facebook">
+                      <input type="text" class="form-control" id="url" name="url" placeholder="Ingresa tu dirección de Facebook" value="{{$url}}">
                     </div>
-                    <input type="checkbox" class="minimal col-sm-1">
+                    <input type="checkbox" id="active" name="active" class="minimal col-sm-1">
                   </div>
-                  <div class="form-group col-sm-12">
+                  <!--div class="form-group col-sm-12">
                   	<label for="twitter" class="col-sm-1 control-label"><a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a></label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="twitter" placeholder="Ingresa tu dirección de Twitter">
@@ -75,10 +78,11 @@
                       <input type="text" class="form-control" id="youtube" placeholder="Ingresa tu dirección  de Youtube">
                     </div>
                     <input type="checkbox" class="minimal col-sm-1">
-                  </div>
+                  </div-->
                   <div class="box-footer col-sm-12">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
+                  </form>
                 </div>
               </div><!-- /.box -->
 

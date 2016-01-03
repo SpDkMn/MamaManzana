@@ -69,7 +69,7 @@ use App\Http\Requests;
           @if(Request::is('admin/products'))
             class="active"
           @endif
-          ><a href="route('admin_products_path')"><i class="fa fa-circle-o"></i> Productos</a></li>
+          ><a href="{{route('admin_products_path')}}"><i class="fa fa-circle-o"></i> Productos</a></li>
         </ul>
       </li>
       <li
@@ -87,9 +87,6 @@ use App\Http\Requests;
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Paises</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Estados</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Ciudad</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Zonas</a></li>
           <li>
             <a href="#"><i class="fa fa-circle-o"></i> Calendario de envios <i class="fa fa-angle-left pull-right"></i></a>
@@ -142,11 +139,11 @@ use App\Http\Requests;
             class="active"
           @endif
           ><a href="{{ route('admin_social-network_path')}}"><i class="fa fa-circle-o"></i> Redes Sociales</a></li>
-          <li
+          <!--li
           @if(Request::is('admin/menu'))
             class="active"
           @endif
-          ><a href="{{ route('admin_menu_path') }}"><i class="fa fa-circle-o"></i> Menu</a></li>
+          ><a href="{{ route('admin_menu_path') }}"><i class="fa fa-circle-o"></i> Menu</a></li-->
         </ul>
       </li>
     </ul>

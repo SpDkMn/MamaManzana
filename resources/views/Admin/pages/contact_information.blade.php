@@ -28,30 +28,39 @@
           <h3 class="box-title">Información de contacto</h3>
         </div>
         <div class="box-body">
-          <form>
+          @if(!empty(session('status_data')))
+          <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-save"></i> ¡Datos Guardados!</h4>
+            {{session('status_data')}}
+          </div>
+          @endif
+          <form action="{{ route('admin_contact-information_patch_path')}}" method="POST">
+            {{ csrf_field() }}
+            {{ method_field('PATCH') }}
             <div class="form-group">
               <label for="email" class="col-sm-2">Correo</label>
               <div class="input-group col-sm-10">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control" id="email" placeholder="Email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{$email}}">
               </div>
             </div>
             <div class="form-group">
               <label for="phone" class="col-sm-2">Teléfono</label>
               <div class="input-group col-sm-10">
                 <span class="input-group-addon"><i class="fa fa-tty"></i></span>
-                <input type="text" class="form-control" id="phone" placeholder="Teléfono">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Teléfono" value="{{$phone}}">
               </div>
             </div>
             <div class="form-group">
               <label for="address" class="col-sm-2">Dirección</label>
               <div class="input-group col-sm-10">
                 <span class="input-group-addon"><i class="fa fa-map"></i></span>
-                <input type="text" class="form-control" id="address" placeholder="Dirección">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Dirección" value="{{$address}}">
               </div>
             </div>
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
           </form>
         </div>

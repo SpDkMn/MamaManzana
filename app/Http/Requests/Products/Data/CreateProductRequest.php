@@ -27,7 +27,11 @@ class CreateProductRequest extends Request
             'name' => 'required|min:3',
             'description' => 'required|min:3',
             'short_description' => 'required|min:3',
-            'cost' => 'required|numeric'
+            'cost' => 'required|numeric',
+            'title' => 'required|min:3',
+            'keywords' => 'required|min:3',
+            'meta_description' => 'required|min:3|max:155',
+            'img' => 'required|image|mimes:jpg,jpeg,gif,bmp,png'
         ];
     }
 }

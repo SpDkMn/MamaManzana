@@ -24,7 +24,7 @@ class UpdateAboutImgRequest extends Request
     public function rules()
     {
         return [
-            'about_id' => 'required|integer',
+            //'about_id' => 'required|integer',
             'about_img' => 'required|image|mimes:jpg,jpeg,gif,bmp,png'
         ];
     }

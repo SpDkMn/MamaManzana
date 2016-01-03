@@ -230,11 +230,8 @@
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="{{route('logout_path')}}" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>

@@ -27,6 +27,13 @@
           <h3 class="box-title">Configuraciones</h3>
         </div>
         <div class="box-body">
+          @if(!empty(session('status_data')))
+          <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-save"></i> ¡Datos Guardados!</h4>
+            {{session('status_data')}}
+          </div>
+          @endif
           <form action="{{ route('admin_setting_patch_path')}}" method="POST">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
@@ -39,7 +46,7 @@
               <textarea class="form-control" id="phrase" name="phrase" rows="3" placeholder="phrase">{{$phrase}}</textarea>
             </div>
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
           </form>
         </div>
@@ -55,6 +62,13 @@
           <h3 class="box-title">Meta datos</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
+          @if(!empty(session('status_meta')))
+          <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-save"></i> ¡Datos Guardados!</h4>
+            {{session('status_meta')}}
+          </div>
+          @endif
           <form action="{{ route('admin_setting_meta_patch_path')}}" method="POST">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
@@ -71,7 +85,7 @@
               <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Keywords" value="{{$keywords}}">
             </div>
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
           </form>
         </div><!-- /.box-body -->
@@ -95,7 +109,7 @@
                     <label for="logo" class="col-lg-12">Logo</label>
                     <input type="file" id="logo" name="logo">
 	                </div>
-	                 <button type="submit" class="btn btn-primary">Submit</button>
+	                 <button type="submit" class="btn btn-primary">Guardar</button>
 	              </form>
 	            </div>
 	            <div class="col-lg-3">
@@ -107,7 +121,7 @@
   	                <label for="favicon" class="col-lg-12">favicon</label>
 	                  <input type="file" id="favicon" name="favicon">
 	                </div>
-	                <button type="submit" class="btn btn-primary">Submit</button>
+	                <button type="submit" class="btn btn-primary">Guardar</button>
 	              </form>
 	            </div>
 	          </div>
@@ -120,7 +134,7 @@
                   <label for="footer" class="col-lg-12">Foto</label>
                   <input type="file" id="footer" name="footer">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
               </form>
             </div>
           </div><!-- /.chat -->

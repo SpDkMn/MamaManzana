@@ -147,6 +147,7 @@ return [
 
         Intervention\Image\ImageServiceProviderLaravel5::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
@@ -201,6 +202,7 @@ return [
 
         'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Datatables' => Yajra\Datatables\Datatables::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
 

@@ -24,10 +24,12 @@ class UpdateCategoryRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
-            'description' => 'required|min:3',
-            'short_description' => 'required|min:3',
-            'active' => 'required'
+          'name' => 'required|min:3',
+          'description' => 'required|min:3',
+          'short_description' => 'required|min:3',
+          'title' => 'required|min:3',
+          'keywords' => 'required|min:3',
+          'meta_description' => 'required|min:3|max:155'
         ];
     }
 }

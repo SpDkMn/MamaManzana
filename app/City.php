@@ -8,7 +8,7 @@ class City extends Model
 {
     protected $table = 'cities';
 
-    public function zones(){
-    	return $this->hasMany('MamaManzana\Zones');
+    public function zone(){
+    	return $this->hasOne('MamaManzana\Zones');
     }
 }

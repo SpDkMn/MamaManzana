@@ -29,35 +29,38 @@
                   <h3 class="box-title">Acerca de nosotros</h3>
                 </div>
                 <div class="box-body">
-                  <form>
+                  @if(!empty(session('status_data')))
+                  <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-save"></i> ¡Datos Guardados!</h4>
+                    {{session('status_data')}}
+                  </div>
+                  @endif
+                  <form action="{{ route('admin_about-us_patch_path')}}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('PATCH') }}
                     <div class="form-group">
                       <label for="title">Titulo</label>
-                      <input type="text" class="form-control" id="title" placeholder="Ingresa un titulo">
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Ingresa un titulo" value="{{$about->title}}">
                     </div>
                     <div class="form-group">
                       <label for="about">Acerca de nosotros</label>
-                      <textarea id="about" name="about" rows="10" cols="80">
-                        Aquí va el about
-                      </textarea>
+                      <textarea id="about" name="about" rows="10" cols="80">{{$about->about}}</textarea>
                     </div>
                     <div class="form-group">
                       <label for="mission">Misión</label>
-                      <textarea id="mission" name="mission" rows="10" cols="80">
-                        Aquí va la misión
-                      </textarea>
+                      <textarea id="mission" name="mission" rows="10" cols="80">{{$about->mission}}</textarea>
                     </div>
                     <div class="form-group">
                       <label for="vision">Visión</label>
-                      <textarea id="vision" name="vision" rows="10" cols="80">
-                        Aquí va la visión
-                      </textarea>
+                      <textarea id="vision" name="vision" rows="10" cols="80">{{$about->vision}}</textarea>
                     </div>
                     <div class="form-group">
                       <label for="values">Valores</label>
-                      <input type="text" class="form-control" id="values" placeholder="Ingresa un titulo">
+                      <input type="text" class="form-control" id="values" name="values" placeholder="Ingresa un titulo" value="{{$about->values}}">
                     </div>
                     <div class="box-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                   </form>
                 </div>
@@ -75,21 +78,30 @@
                   <h3 class="box-title">Meta datos</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <form>
+                  @if(!empty(session('status_meta')))
+                  <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-save"></i> ¡Datos Guardados!</h4>
+                    {{session('status_meta')}}
+                  </div>
+                  @endif
+                  <form action="{{ route('admin_about-us_meta_patch_path')}}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('PATCH') }}
                     <div class="form-group">
                       <label for="title">Titulo</label>
-                      <input type="text" class="form-control" id="title" placeholder="Ingresa un titulo">
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Ingresa un titulo" value="{{$about->meta->title}}">
                     </div>
                     <div class="form-group">
                       <label>Descripción</label>
-                      <textarea class="form-control" id="description" rows="3" placeholder="Descripción"></textarea>
+                      <textarea class="form-control" id="description" name="description" rows="3" placeholder="Descripción">{{$about->meta->description}}</textarea>
                     </div>
                     <div class="form-group">
                       <label for="keywords">Keywords</label>
-                      <input type="text" class="form-control" id="keywords" placeholder="Keywords">
+                      <input type="text" class="form-control" id="keywords" placeholder="Keywords" name="keywords" value="{{$about->meta->keywords}}">
                     </div>
                     <div class="box-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                   </form>
                 </div><!-- /.box-body -->
@@ -105,14 +117,16 @@
                   <h3 class="box-title">Imagenes</h3>
                 </div>
                 <div class="box-body">
-                  <img class="img-responsive pad" src="{{asset('dist/img/photo2.png')}}" alt="Photo">
-                  <form>
+                  <img class="img-responsive pad" src="{{asset('img/about-us/'.$about->img->name)}}" alt="Photo">
+                  <form action="{{ route('admin_about-us_img_patch_path')}}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{ method_field('PATCH') }}
                     <div class="form-group">
                       <label for="photo">Foto</label>
-                      <input type="file" id="photo">
+                      <input type="file" id="photo" name="about_img">
                     </div>
                     <div class="box-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                   </form>
                 </div><!-- /.chat -->

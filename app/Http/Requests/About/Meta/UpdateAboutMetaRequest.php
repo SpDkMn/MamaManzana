@@ -24,7 +24,6 @@ class UpdateAboutMetaRequest extends Request
     public function rules()
     {
         return [
-            'about_id' => 'required|integer',
             'title' => 'required|min:3',
             'keywords' => 'required|min:3',
             'description' => 'required|min:3|max:155'

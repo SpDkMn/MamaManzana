@@ -78,14 +78,16 @@ class AboutMetaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAboutMetaRequest $request, $id)
+    public function update(UpdateAboutMetaRequest $request)
     {
-        $aboutMeta = AboutMeta::find($id);
-        $aboutMete->about_id = $request->about_id;
+        $aboutMeta = AboutMeta::find(1);
+
         $aboutMeta->title = $request->title;
         $aboutMeta->keywords = $request->keywords;
         $aboutMeta->description = $request->description;
         $aboutMeta->save();
+
+        return redirect('admin/about-us')->with('status_meta', 'Los meta datos se guardaron correctamente.');
     }
 
     /**

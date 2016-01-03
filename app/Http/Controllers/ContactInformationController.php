@@ -20,7 +20,8 @@ class ContactInformationController extends Controller
      */
     public function index()
     {
-        //
+      $contact_information = ContactInformation::find(1);
+      return view('Admin.pages.contact_information',$contact_information);
     }
 
     /**
@@ -46,7 +47,7 @@ class ContactInformationController extends Controller
         $contactInformation->phone = $request->phone;
         $contactInformation->address = $request->address;
         $contactInformation->save();
-        
+
     }
 
     /**
@@ -78,13 +79,15 @@ class ContactInformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateContactInformationRequest $request, $id)
+    public function update(UpdateContactInformationRequest $request)
     {
-        $contactInformation = ContactInformation::find($id);
+        $contactInformation = ContactInformation::find(1);
         $contactInformation->email = $request->email;
         $contactInformation->phone = $request->phone;
         $contactInformation->address = $request->address;
         $contactInformation->save();
+
+        return redirect('admin/contact-information')->with('status_data', 'Los datos de contacto se guardaron correctamente.');
     }
 
     /**

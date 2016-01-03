@@ -8,7 +8,7 @@ class ShippingCost extends Model
 {
     protected $table = 'shipping_cost';
 
-    public function zones(){
+    public function zone(){
     	$this->belongsTo('MamaManzana\Zones');
     }
 }

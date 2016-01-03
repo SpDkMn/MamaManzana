@@ -17,4 +17,9 @@ class Product extends Model
     {
         return $this->hasOne('MamaManzana\ProductImg');
     }
+
+    public function categories()
+    {
+      return $this->belongsToMany('MamaManzana\Category','categories_products');
+    }
 }

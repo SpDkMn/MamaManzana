@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use MamaManzana\Http\Requests;
 use MamaManzana\Http\Controllers\Controller;
 
+use MamaManzana\Http\Requests\SocialNetworks\FacebookRequest as FacebookRequest;
 use MamaManzana\SocialNetwork as SocialNetwork;
 use MamaManzana\Http\Requests\SocialNetworks\CreateSocialNetworkRequest as CreateSocialNetworkRequest;
 use MamaManzana\Http\Requests\SocialNetworks\UpdateSocialNetworkRequest as UpdateSocialNetworkRequest;
@@ -20,7 +21,8 @@ class SocialNetworkController extends Controller
      */
     public function index()
     {
-        //
+      $social = SocialNetwork::find(1);
+      return view('Admin.pages.social-network',$social);
     }
 
     /**
@@ -82,6 +84,14 @@ class SocialNetworkController extends Controller
         $socialN->name = $request->name;
         $socialN->url =  $request->url;
         $socialN->save();
+    }
+
+    public function facebook(Request $request)
+    {
+      $socialN = SocialNetwork::find(1);
+      $socialN->url =  $request->url;
+      $socialN->save();
+      return redirect('admin/social-network')->with('status', 'Profile updated!');
     }
 
     /**

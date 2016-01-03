@@ -20,15 +20,17 @@
         </section>
 
         <!-- Main content -->
+        <div id='modales'></div>
+        @include('Admin.pages.store.categories.modal_new')
         <section class="content">
           <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <button class="btn btn-primary"><i class="fa fa-plus"></i> Nueva Categoria</button>
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-new"><i class="fa fa-plus"></i> Nueva Categoria</button>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
+                  <table id="category-data" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>Id</th>
@@ -38,308 +40,6 @@
                         <th>Editar</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td><img src="{{asset('dist/img/photo2.png')}}" width="80px"></td>
-                        <td><i class="fa fa-check"></i><i class="fa fa-close"></i></td>
-                        <td style="text-align: center;text-align: -webkit-center;">
-                          <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal1"><i class="fa fa-trash"></i></button>
-                        </td>
-                      </tr>
-                    </tbody>
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -359,8 +59,47 @@
 
 @section('script-src-1')
     <script>
-      $(function () {
-        $('#example1').DataTable();
+$(function() {
+    $('#category-data').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('admin_categories_data_path') !!}',
+        columns: [
+          { data: 'id', name: 'id' },
+          { data: 'name', name: 'name' },
+          { data: 'img', name: 'img' },
+          { data: 'active', name: 'active' },
+          { data: 'action', name: 'action' }
+        ]
+    });
+    $(document).on('click', '.update',function (e) {
+      $('#modales').empty();
+      $.get(
+        'http://mamamanzana.app/admin/category/edit',
+        {id:$(this).data('id')},
+        function(htmlexterno){
+          $("#modales").html(htmlexterno);
+          $('#modal-update').toggle();
+          $(document).on('click', '.close-update',function (e) {
+            $('#modal-update').toggle();
+            $('#modales').empty();
+          });
+        });
       });
-    </script>
+      $(document).on('click', '.delete',function (e) {
+        $('#modales').empty();
+        $.get(
+          'http://mamamanzana.app/admin/category/delete',
+          {id:$(this).data('id')},
+          function(htmlexterno){
+            $("#modales").html(htmlexterno);
+            $('#modal-delete').toggle();
+            $(document).on('click', '.close-delete',function (e) {
+              $('#modal-delete').toggle();
+              $('#modales').empty();
+            });
+          });
+        });
+});
+</script>
 @endsection

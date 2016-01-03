@@ -118,7 +118,7 @@ class SettingController extends Controller
       $setting->phrase = $request->phrase;
 
       $setting->save();
-      return view('Admin.pages.settings',$setting);
+      return redirect('admin/settings')->with('status_data', 'Los datos se guardaron correctamente.');
     }
 
     public function patchSettingMeta(SettingsMetaRequest $request){
@@ -129,7 +129,7 @@ class SettingController extends Controller
       $setting->description = $request->description;
 
       $setting->save();
-      return view('Admin.pages.settings',$setting);
+      return redirect('admin/settings')->with('status_meta', 'Los meta datos se guardaron correctamente.');
     }
 
     public function patchLogo(Request $request){
@@ -146,7 +146,7 @@ class SettingController extends Controller
       }
 
       $setting->save();
-      return view('Admin.pages.settings',$setting);
+      return redirect('admin/settings')->with('status', 'Profile updated!');
     }
 
     public function patchFooter(Request $request){
@@ -163,7 +163,7 @@ class SettingController extends Controller
       }
 
       $setting->save();
-      return view('Admin.pages.settings',$setting);
+      return redirect('admin/settings')->with('status', 'Profile updated!');
     }
 
     public function patchFavicon(Request $request){
@@ -180,7 +180,7 @@ class SettingController extends Controller
       }
 
       $setting->save();
-      return view('Admin.pages.settings',$setting);
+      return redirect('admin/settings')->with('status', 'Profile updated!');
     }
 
     /**

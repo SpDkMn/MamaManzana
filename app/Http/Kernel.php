@@ -29,5 +29,6 @@ class Kernel extends HttpKernel
         'auth' => \MamaManzana\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \MamaManzana\Http\Middleware\RedirectIfAuthenticated::class,
+        'authAdmin' => \MamaManzana\Http\Middleware\AuthAdmin::class,
     ];
 }

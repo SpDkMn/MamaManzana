@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use MamaManzana\Http\Requests;
 use MamaManzana\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 use Image;
 use MamaManzana\AboutImg as AboutImg;
@@ -96,9 +97,21 @@ class AboutImgController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAboutImgRequest $request, $id)
+    public function update(UpdateAboutImgRequest $request)
     {
-        //
+      $aboutImg = AboutImg::find(1);
+
+      if(Input::hasFile('about_img')){
+          $file = Input::file('about_img');
+          $fileName = $file->getClientOriginalName();
+          $extension = $file->getClientOriginalExtension();
+          $img = Image::make(Input::file('about_img'));
+          $imgName = sha1($fileName.time()).'.'.$extension;
+          $img->save('img/about-us/'.$imgName);
+          $aboutImg->name = $imgName;
+      }
+      $aboutImg->save();
+      return redirect('admin/about-us')->with('status', 'Profile updated!');
     }
 
     /**

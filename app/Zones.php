@@ -8,7 +8,7 @@ class Zones extends Model
 {
     protected $table = 'zones';
 
-    public function cities(){
+    public function city(){
     	$this->belongsTo('MamaManzana\City');
     }
 
@@ -21,6 +21,6 @@ class Zones extends Model
     }
 
     public function shippingCosts(){
-    	$this->hasMany('MamaManzana\ShippingCost');
+    	$this->hasOne('MamaManzana\ShippingCost');
     }
 }
