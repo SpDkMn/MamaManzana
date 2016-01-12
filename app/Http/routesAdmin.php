@@ -159,6 +159,21 @@ Route::group(['namespace' => 'Category'], function()
     function(){return view('Admin.pages.sliders');}
   ]);
 
+  Route::get('zonas',[
+    'as'  =>  'zones_path',
+    'uses'=>  'ZonesController@index',
+  ]);
+
+  Route::get('zonas-data',[
+    'as'  =>  'zone_data_path',
+    'uses'=>  'ZonesController@anyData',
+  ]);
+
+  Route::post('new-zona',[
+    'as'  =>  'new_zone_path',
+    'uses'=>  'ZonesController@store',
+  ]);
+
   Route::get('users',[
     'as'  => 'users_path',
     'uses'=> 'UserController@index',

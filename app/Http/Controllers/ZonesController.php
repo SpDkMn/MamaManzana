@@ -6,13 +6,25 @@ use Illuminate\Http\Request;
 
 use MamaManzana\Http\Requests;
 use MamaManzana\Http\Controllers\Controller;
+use Datatables;
+use DB;
 
+use MamaManzana\City as City;
 use MamaManzana\Zones as Zones;
+use MamaManzana\ShippingCost as ShippingCost;
 use MamaManzana\Http\Requests\Zones\CreateZonesRequest as CreateZonesRequest;
 use MamaManzana\Http\Requests\Zones\UpdateZonesRequest as UpdateZonesRequest;
 
 class ZonesController extends Controller
 {
+  public function anyData(){
+    $data =DB::table('zones as z')
+    ->join('cities as c', 'c.id', '=', 'z.city_id')
+    ->join('shipping_cost as sc', 'sc.zone_id', '=', 'z.id')
+    ->select('z.id as id','z.name as name','c.name as destiny','sc.cost as flete')
+    ->where('z.deleted','0');
+    return Datatables::of($data)->make(true);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +32,13 @@ class ZonesController extends Controller
      */
     public function index()
     {
-        //
+      $zones = DB::table('zones')->select('city_id')->distinct()->get();
+      $notIn = [];
+      foreach ($zones as $z) {
+        array_push($notIn,$z->city_id);
+      }
+      $cities = DB::table('cities')->whereNotIn('id',$notIn)->orderBy('name', 'asc')->get();
+      return view('Admin.pages.delivery.zones.index',['cities'=>$cities]);
     }
 
     /**
@@ -41,13 +59,23 @@ class ZonesController extends Controller
      */
     public function store(CreateZonesRequest $request)
     {
-        $zone = new Zones;
-        $zone->name = $request->name;
-        $zone->reference = $request->reference;
-        $zone->country_id = $request->country_id;
-        $zone->state_id = $request->state_id;
-        $zone->city_id = $request->city_id;
-        $zone->save();
+      $city = City::findOrFail($request->city);
+
+      $zone = new Zones;
+      $zone->name = $request->name;
+      $zone->reference = $request->reference;
+      $zone->country_id = 1;
+      $zone->state_id = 1;
+      $zone->city_id = $city->id;
+      $zone->save();
+
+      $sc = new ShippingCost;
+      $sc->zone_id = $zone->id;
+      $sc->name = $request->name;
+      $sc->cost = $request->cost;
+      $sc->save();
+
+      return redirect('admin/zonas');
     }
 
     /**
