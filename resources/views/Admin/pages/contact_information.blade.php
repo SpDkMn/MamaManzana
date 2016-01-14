@@ -59,6 +59,18 @@
                 <input type="text" class="form-control" id="address" name="address" placeholder="Dirección" value="{{$address}}">
               </div>
             </div>
+            <div class="form-group">
+              <label for="title">Titulo</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="Ingresa un titulo" value="{{$title}}">
+            </div>
+            <div class="form-group">
+              <label>Descripción</label>
+              <textarea class="form-control" id="description" name="description" rows="3" placeholder="Descripción">{{$description}}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="keywords">Keywords</label>
+              <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Keywords" value="{{$keywords}}">
+            </div>
             <div class="box-footer">
               <button type="submit" class="btn btn-primary">Guardar</button>
             </div>

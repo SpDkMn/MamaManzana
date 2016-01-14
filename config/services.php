@@ -34,11 +34,18 @@ return [
         'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'facebook' => [
+        'client_id' => '1664838993762694',
+        'client_secret' => '1f1cb313e0d3a741136402cfb2a9505e',
+        'redirect' => 'http://mamamanzana.com/login/callback/facebook',
 
+    ],
+    /**
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT'),
         'client_secret' => env('FACEBOOK_SECRET'),
         'redirect' => env('FACEBOOK_REDIRECT'),
     ],
+    */
 
 ];

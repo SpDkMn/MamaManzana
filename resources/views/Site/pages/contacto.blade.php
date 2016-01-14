@@ -1,48 +1,67 @@
 @extends('Site.layout.template')
-@section('body')
-  @include('Site.layout.nav')
-<div class="bgall" style="background-image: url(app/img/bg_us.png)"></div>
-  <section class="section-contact">
+@section('content')
+<section class="section-contact">
     <div class="container">
       <div class="text-center">
-        <h1 class="title">ESCRIBENOS</h1>
+        <h1 class="title">Escribenos</h1>
+        <img src="{{asset('app/img/mustache.png')}}" alt="mustache">
       </div>
-      <div class="description">
-        <form action="" class="form-horizontal form-contact">
-          <img data-sr="enter left move 200px over .6s" class="leaf-1" src="app/img/leaf1.png" alt="leaf">
-          <img data-sr="enter right move 200px over .6s" class="leaf-2" src="app/img/leaf2.png" alt="leaf">
-          <div class="form-gp">
-            <label for="concept" class="control-label">Nombre:</label>
-            <div class="col-form">
-              <input type="text" class="form-control" id="concept" name="concept">
+      <div class="row content-contact">
+        <div class="col-md-6">
+          <br>
+          <form action="" class="form-contact">
+            <div class="form-group">
+              <div class="col-form">
+                <input type="text" class="form-control" id="first-name" name="first-name" placeholder="Nombre:" @if($currentUser) value="{{$currentUser->name}}" @endif>
+              </div>
             </div>
+            <!--div class="form-group">
+              <div class="col-form">
+                <input type="text" class="form-control" id="last-name" name="last-name"placeholder="Apellido:" @if($currentUser) value="{{$currentUser->name}}" @endif>
+              </div>
+            </div-->
+            <div class="form-group">
+              <div class="col-form">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email:" @if($currentUser) value="{{$currentUser->email}}" @endif>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-form">
+                <select name="" id="" class="form-control">
+                  <option value="0"> </option>
+                  @foreach($cities as $city)
+                  <option value="{{$city->id}}">{{$city->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-form">
+                <textarea class="form-control textar" id="message" name="message"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="text-center">
+                <button type="button" class="btn-send">Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6 bor-left">
+          <br>
+          <div class="call-us">
+            <h4>Correo:</h4>
+            <p>{{$contactInformation->email}}</p>
+            <br>
+            <h4>Teléfono:</h4>
+            <p>{{$contactInformation->phone}}<br>De Lunes a Sábado de 9:00am a 7:00pm</p>
+            <br>
+            <h4>Dirección:</h4>
+            <p>{{$contactInformation->address}}</p>
           </div>
-          <div class="form-gp">
-            <label for="amount" class="control-label">Email:</label>
-            <div class="col-form">
-              <input type="email" class="form-control" id="email" name="email">
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="description" class="control-label">Comentario:</label>
-            <div class="col-form">
-              <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-            </div>
-          </div> 
-          <div class="form-gp">
-            <div class="text-right">
-              <button type="button" class="btn-send">ENVIAR</button>
-            </div>
-          </div>
-        </form>
+          <br>
+        </div>
       </div>
     </div>
   </section>
-  <div class="up-effect">
-    <div class="container">
-      <a class="btn-up" href="#">
-        <i class="fa fa-chevron-up fa-lg"></i>
-      </a>
-    </div>
-  </div>
 @stop

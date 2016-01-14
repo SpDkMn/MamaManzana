@@ -2,7 +2,8 @@
 
 namespace MamaManzana\Http\Controllers;
 
-use Socialite;
+//use Socialite;
+use Laravel\Socialite\Contracts\Factory as Socialite;
 use MamaManzana\User as User;
 use Illuminate\Support\Facades\Auth as Auth;
 
@@ -12,11 +13,10 @@ class AuthController extends Controller {
         $this->socialite = $socialite;
     }
 
-    public function getSocialAuth($provider = null) {
-        if (!config("services.$provider"))
-            abort('404'); //just to handle providers that doesn't exist
-
-        return $this->socialite->with($provider)->redirect();
+    public function getSocialAuth($provider=null)
+    {
+      if(!config("services.$provider")) abort('404'); //just to handle providers that doesn't exist
+      return $this->socialite->with($provider)->redirect();
     }
 
     public function getSocialAuthCallback($provider = null) {

@@ -46,6 +46,9 @@ class ContactInformationController extends Controller
         $contactInformation->email = $request->email;
         $contactInformation->phone = $request->phone;
         $contactInformation->address = $request->address;
+        $contactInformation->title = $request->title;
+        $contactInformation->description = $request->description;
+        $contactInformation->keywords = $request->keywords;
         $contactInformation->save();
 
     }
@@ -85,6 +88,9 @@ class ContactInformationController extends Controller
         $contactInformation->email = $request->email;
         $contactInformation->phone = $request->phone;
         $contactInformation->address = $request->address;
+        $contactInformation->title = $request->title;
+        $contactInformation->description = $request->description;
+        $contactInformation->keywords = $request->keywords;
         $contactInformation->save();
 
         return redirect('admin/contact-information')->with('status_data', 'Los datos de contacto se guardaron correctamente.');

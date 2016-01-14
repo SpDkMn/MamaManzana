@@ -144,6 +144,7 @@ return [
         MamaManzana\Providers\AuthServiceProvider::class,
         MamaManzana\Providers\EventServiceProvider::class,
         MamaManzana\Providers\RouteServiceProvider::class,
+        MamaManzana\Providers\ViewComposerServiceProvider::class,
 
         Intervention\Image\ImageServiceProviderLaravel5::class,
         Laravel\Socialite\SocialiteServiceProvider::class,

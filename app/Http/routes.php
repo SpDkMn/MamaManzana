@@ -11,31 +11,55 @@
 |
 */
 
-/*
-Route::group(['as' => 'admin::'], function () {
-    Route::get('dashboard', ['as' => 'dashboard', function () {
-        // Route named "admin::dashboard"
-    }]);
-});
+Route::get('/login/{provider?}',[
+    'uses' => 'AuthController@getSocialAuth',
+    'as'   => 'auth.getSocialAuth'
+]);
 
-Route::get('createsetting','SettingController@create');
-Route::post('createsetting','SettingController@store');
-*/
-Route::get('/categoria', function () {
-    return view('Site.pages.categoria');
-});
-Route::get('/contacto', function () {
-    return view('Site.pages.contacto');
-});
+Route::get('/login/callback/{provider?}',[
+    'uses' => 'AuthController@getSocialAuthCallback',
+    'as'   => 'auth.getSocialAuthCallback'
+]);
 
 Route::get('/', [
   'as'  =>  'home_path',
-  function () {return view('Site.pages.index');}
+  function () {
+    $metadata = MamaManzana\Setting::findOrFail(1);
+    $categorias = MamaManzana\Category::with('img')->where('active',1)->where('deleted',0)->get();
+    $contactInformation = MamaManzana\ContactInformation::findOrFail(1);
+    $sliders = MamaManzana\Slider::where('active',1)->where('deleted',0)->get();
+    return view('Site.pages.index',['metadata' => $metadata,'categorias'=>$categorias,'contactInformation'=>$contactInformation, 'sliders' => $sliders]);
+  }
 ]);
 
-Route::get('/login', function () {
-    return view('Site.pages.login');
-});
+Route::get('/nosotros', [
+  'as'  =>  'nosotros_path',
+  function () {
+    $metadata = MamaManzana\AboutMeta::findOrFail(1);
+    $about = MamaManzana\About::findOrFail(1);
+    return view('Site.pages.nosotros',['metadata' => $metadata,'about'=>$about]);
+  }
+]);
+
+Route::get('/categorias', [
+  'as'  =>  'category_path',
+  function () {
+    return view('Site.pages.categoria');
+  }
+]);
+
+Route::get('/contacto', [
+  'as'  =>  'contact_path',
+  function () {
+    $contactInformation = MamaManzana\ContactInformation::findOrFail(1);
+    $metadata = $contactInformation;
+    $cities = MamaManzana\City::orderBy('name','asc')->get();
+    return view('Site.pages.contacto',['metadata' => $metadata, 'contactInformation' =>$contactInformation,'cities'=> $cities]);
+  }
+]);
+
+/** ** */
+
 Route::get('/pedidocateg', function () {
     return view('Site.pages.pedidocateg');
 });
@@ -51,9 +75,7 @@ Route::get('/producto', function () {
 Route::get('/productos', function () {
     return view('Site.pages.productos');
 });
-Route::get('/nosotros', function () {
-    return view('Site.pages.nosotros');
-});
+
 Route::get('/registrate', function () {
     return view('Site.pages.registrate');
 });
