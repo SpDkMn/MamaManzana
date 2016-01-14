@@ -78,7 +78,7 @@ class StatusController extends Controller
      */
     public function update(UpdateStatusRequest $request, $id)
     {
-        $status = Status::find($id);
+        $status = Status::findOrFail($id);
         $status->name = $request->name;
         $status->description = $request->description;
         $status->save();
@@ -92,7 +92,7 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
-        $status = Status::find($id);
+        $status = Status::findOrFail($id);
         $status->deleted = true;
         $status->actived = false;
         $status->save();

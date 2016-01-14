@@ -79,7 +79,7 @@ class ShippingCostController extends Controller
      */
     public function update(UpdateShippingCostRequest $request, $id)
     {
-        $shippingCost = ShippingCost::find($id);
+        $shippingCost = ShippingCost::findOrFail($id);
         $shippingCost->zone_id = $request->zone_id;
         $shippingCost->name = $request->name;
         $shippingCost->cost = $request->cost;
@@ -94,7 +94,7 @@ class ShippingCostController extends Controller
      */
     public function destroy($id)
     {
-        $shippingCost = ShippingCost::find($id);
+        $shippingCost = ShippingCost::findOrFail($id);
         $shippingCost->actived = false;
         $shippingCost->deleted = true;
         $shippingCost->save();

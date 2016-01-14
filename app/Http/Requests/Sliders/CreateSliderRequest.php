@@ -27,7 +27,8 @@ class CreateSliderRequest extends Request
             'title' = 'required|min:3',
             'action' => 'required|min:3',
             'short_description' => 'required|min:3',
-            'slug' => 'required|min:3'
+            'slug' => 'required|min:3',
+            'photo' => 'required|image|mimes:jpg,jpeg,gif,bmp,png',
         ];
     }
 }

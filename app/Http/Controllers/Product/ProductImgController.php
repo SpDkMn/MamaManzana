@@ -86,7 +86,7 @@ class ProductImgController extends Controller
      */
     public function update(UpdateProductImgRequest $request, $id)
     {
-        $productImg = ProductImg::find($id);
+        $productImg = ProductImg::findOrFail($id);
         if(Input::hasFile('product_img')){
             $file = Input::file('product_img');
             $fileName = $file->getClientOriginalName();
@@ -107,7 +107,7 @@ class ProductImgController extends Controller
      */
     public function destroy($id)
     {
-        $productImg = ProductImg::find($id);
+        $productImg = ProductImg::findOrFail($id);
         $productImg->delete();
     }
 }

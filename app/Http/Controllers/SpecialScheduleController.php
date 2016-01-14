@@ -79,7 +79,7 @@ class SpecialScheduleController extends Controller
      */
     public function update(UpdateSpecialScheduleRequest $request, $id)
     {
-        $specialSchedule = SpecialSchedule::find($id);
+        $specialSchedule = SpecialSchedule::findOrFail($id);
         $specialSchedule->day = $request->day;
         $specialSchedule->month = $request->month;
         $specialSchedule->start_time = $request->start_time;
@@ -95,7 +95,7 @@ class SpecialScheduleController extends Controller
      */
     public function destroy($id)
     {
-        $specialSchedule = SpecialSchedule::find($id);
+        $specialSchedule = SpecialSchedule::findOrFail($id);
         $specialSchedule->delete();
     }
 }

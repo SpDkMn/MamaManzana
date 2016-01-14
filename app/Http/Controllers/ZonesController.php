@@ -17,14 +17,22 @@ use MamaManzana\Http\Requests\Zones\UpdateZonesRequest as UpdateZonesRequest;
 
 class ZonesController extends Controller
 {
-  public function anyData(){
+  public function anyData()
+  {
     $data =DB::table('zones as z')
     ->join('cities as c', 'c.id', '=', 'z.city_id')
     ->join('shipping_cost as sc', 'sc.zone_id', '=', 'z.id')
-    ->select('z.id as id','z.name as name','c.name as destiny','sc.cost as flete')
+    ->select('z.id as id','z.name as name','c.name as destiny','sc.cost as flete','z.actived as active')
     ->where('z.deleted','0');
-    return Datatables::of($data)->make(true);
+    return Datatables::of($data)
+      ->editColumn('active','<i class="fa fa-{{ ($active == 1)? "check":"close"}}"></i>')
+      ->addColumn('action',
+        '<a class="btn btn-primary update" href="{{route(\'admin_edit_zonas_path\',$id)}}" ><i class="fa fa-pencil"></i></a>
+        <button class="btn btn-danger delete" data-toggle="modal" data-id="{{$id}}" data-target="#modal-delete"><i class="fa fa-trash"></i></button>'
+      )
+      ->make(true);
   }
+
     /**
      * Display a listing of the resource.
      *
@@ -97,7 +105,16 @@ class ZonesController extends Controller
      */
     public function edit($id)
     {
-        //
+      $zona = Zones::findOrFail($id);
+      $zones = DB::table('zones')->select('city_id')->distinct()->get();
+      $notIn = [];
+      foreach ($zones as $z) {
+        if($z->city_id != $zona->city_id){
+          array_push($notIn,$z->city_id);
+        }
+      }
+      $cities = DB::table('cities')->whereNotIn('id',$notIn)->orderBy('name', 'asc')->get();
+      return view('Admin.pages.delivery.zones.edit', ['zonas' => $zona,'cities' => $cities]);
     }
 
     /**
@@ -109,26 +126,39 @@ class ZonesController extends Controller
      */
     public function update(UpdateZonesRequest $request, $id)
     {
-        $zone = Zones::find($id);
-        $zone->name = $request->name;
-        $zone->reference = $request->reference;
-        $zone->country_id = $request->country_id;
-        $zone->state_id = $request->state_id;
-        $zone->city_id = $request->city_id;
-        $zone->save();
+      $city = City::findOrFail($request->city);
+
+      $zone = Zones::findOrFail($id);
+      $zone->name = $request->name;
+      $zone->reference = $request->reference;
+      $zone->city_id = $city->id;
+      $zone->save();
+
+      $sc = $zone->shippingCosts;
+      $sc->name = $request->name;
+      $sc->cost = $request->cost;
+      $sc->save();
+
+      return redirect('admin/zonas');
     }
 
+    public function delete(Request $request)
+    {
+      return view('Admin.pages.delivery.zones.modal_delete',['id'=>$request->id]);
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $zone = Zones::find($id);
+        $zone = Zones::findOrFail($request->id);
         $zone->actived = false;
         $zone->deleted = true;
         $zone->save();
+
+        return redirect('admin/zonas');
     }
 }

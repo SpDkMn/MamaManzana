@@ -21,7 +21,7 @@ class SocialNetworkController extends Controller
      */
     public function index()
     {
-      $social = SocialNetwork::find(1);
+      $social = SocialNetwork::findOrFail(1);
       return view('Admin.pages.social-network',$social);
     }
 
@@ -80,7 +80,7 @@ class SocialNetworkController extends Controller
      */
     public function update(UpdateSocialNetworkRequest $request, $id)
     {
-        $socialN = SocialNetwork::find($id);
+        $socialN = SocialNetwork::findOrFail($id);
         $socialN->name = $request->name;
         $socialN->url =  $request->url;
         $socialN->save();
@@ -88,7 +88,7 @@ class SocialNetworkController extends Controller
 
     public function facebook(Request $request)
     {
-      $socialN = SocialNetwork::find(1);
+      $socialN = SocialNetwork::findOrFail(1);
       $socialN->url =  $request->url;
       $socialN->save();
       return redirect('admin/social-network')->with('status', 'Profile updated!');
@@ -102,7 +102,7 @@ class SocialNetworkController extends Controller
      */
     public function destroy($id)
     {
-        $socialN = SocialNetwork::find($id);
+        $socialN = SocialNetwork::findOrFail($id);
         $socialN->delete();
     }
 }

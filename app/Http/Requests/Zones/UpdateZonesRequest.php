@@ -24,9 +24,9 @@ class UpdateZonesRequest extends Request
     public function rules()
     {
         return [
-            'country_id' => 'required|exists:countries,id',
+            /*'country_id' => 'required|exists:countries,id',
             'state_id' => 'required|exists:states,id',
-            'city_id' => 'required|exists:cities,id',
+            'city_id' => 'required|exists:cities,id',*/
             'name' => 'required|min:3',
             'reference' => 'required|min:3'
         ];

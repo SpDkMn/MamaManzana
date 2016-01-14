@@ -36,7 +36,7 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Imagen</th>
-                        <th>Activo</th>
+                        <th style="width: 10px">Activo</th>
                         <th>Editar</th>
                       </tr>
                     </thead>
@@ -72,20 +72,6 @@ $(function() {
           { data: 'action', name: 'action' }
         ]
     });
-    $(document).on('click', '.update',function (e) {
-      $('#modales').empty();
-      $.get(
-        'http://mamamanzana.app/admin/category/edit',
-        {id:$(this).data('id')},
-        function(htmlexterno){
-          $("#modales").html(htmlexterno);
-          $('#modal-update').toggle();
-          $(document).on('click', '.close-update',function (e) {
-            $('#modal-update').toggle();
-            $('#modales').empty();
-          });
-        });
-      });
       $(document).on('click', '.delete',function (e) {
         $('#modales').empty();
         $.get(

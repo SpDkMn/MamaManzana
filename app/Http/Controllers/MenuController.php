@@ -78,7 +78,7 @@ class MenuController extends Controller
      */
     public function update(UpdateMenuRequest $request, $id)
     {
-        $menu = Menu::find($id);
+        $menu = Menu::findOrFail($id);
         $menu->name = $request->name;
         $menu->order = $request->order;
         $menu->save();
@@ -92,7 +92,7 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        $menu = Menu::find($id);
+        $menu = Menu::findOrFail($id);
         $menu->delete();
     }
 }

@@ -39,6 +39,8 @@
                         <th>Nombre</th>
                         <th>Destino</th>
                         <th>Flete</th>
+                        <th>Activo</th>
+                        <th>Editar</th>
                       </tr>
                     </thead>
                   </table>
@@ -72,27 +74,15 @@ $(function() {
           { data: 'id', name: 'id' },
           { data: 'name', name: 'name' },
           { data: 'destiny', name: 'destiny' },
-          { data: 'flete', name: 'flete' }
+          { data: 'flete', name: 'flete' },
+          { data: 'active', name: 'active' },
+          { data: 'action', name: 'action' }
         ]
     });
-    $(document).on('click', '.update',function (e) {
-      $('#modales').empty();
-      $.get(
-        'http://mamamanzana.app/admin/category/edit',
-        {id:$(this).data('id')},
-        function(htmlexterno){
-          $("#modales").html(htmlexterno);
-          $('#modal-update').toggle();
-          $(document).on('click', '.close-update',function (e) {
-            $('#modal-update').toggle();
-            $('#modales').empty();
-          });
-        });
-      });
       $(document).on('click', '.delete',function (e) {
         $('#modales').empty();
         $.get(
-          'http://mamamanzana.app/admin/category/delete',
+          'http://mamamanzana.app/admin/zonas/delete',
           {id:$(this).data('id')},
           function(htmlexterno){
             $("#modales").html(htmlexterno);

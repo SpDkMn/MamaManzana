@@ -51,7 +51,7 @@ class ContactController extends Controller
         $contact->save();
 
         $contactInformation = ContactInformation::find(1);
-        $setting = Setting::find(1);
+        $setting = Setting::findOrFail(1);
         $to = [
             'address' => $contactInformation->email,
             'name' => $setting->title . ' - Contacto',

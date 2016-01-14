@@ -152,12 +152,47 @@ Route::group(['namespace' => 'Category'], function()
     'uses'=>  'ProductController@destroy',
   ]);
 });
+/** */
 
+/**
+ *
+ * Admin Sliders
+ */
   Route::get('sliders',[
     'as'  => 'sliders_path',
-    //'uses'=> '',
-    function(){return view('Admin.pages.sliders');}
+    'uses'=> 'SliderController@index',
   ]);
+
+  Route::get('sliders-data',[
+    'as'  => 'sliders_data_path',
+    'uses'=> 'SliderController@anyData',
+  ]);
+
+  Route::patch('new-sliders',[
+    'as'  => 'new_sliders_path',
+    'uses'=> 'SliderController@store',
+  ]);
+
+  Route::get('slider/{id}/edit',[
+    'as'  => 'edit_sliders_path',
+    'uses'=> 'SliderController@edit',
+  ]);
+
+  Route::patch('{id}/update-slider',[
+    'as'  =>  'update_sliders_path',
+    'uses'=>  'SliderController@update',
+  ]);
+
+  Route::get('sliders/delete',[
+    'as'  =>  'delete_sliders_path',
+    'uses'=>  'SliderController@delete'
+  ]);
+
+  Route::delete('sliders/destroy',[
+    'as'  =>  'destroy_sliders_path',
+    'uses'=>  'SliderController@destroy',
+  ]);
+/** */
 
   Route::get('zonas',[
     'as'  =>  'zones_path',
@@ -167,6 +202,26 @@ Route::group(['namespace' => 'Category'], function()
   Route::get('zonas-data',[
     'as'  =>  'zone_data_path',
     'uses'=>  'ZonesController@anyData',
+  ]);
+
+  Route::get('zonas/delete',[
+    'as'  =>  'delete_zonas_path',
+    'uses'=>  'ZonesController@delete'
+  ]);
+
+  Route::delete('zonas/destroy',[
+    'as'  =>  'destroy_zonas_path',
+    'uses'=>  'ZonesController@destroy',
+  ]);
+
+  Route::get('zonas/{id}/edit',[
+    'as'  => 'edit_zonas_path',
+    'uses'=> 'ZonesController@edit',
+  ]);
+
+  Route::patch('{id}/update-zonas',[
+    'as'  =>  'update_zonas_path',
+    'uses'=>  'ZonesController@update',
   ]);
 
   Route::post('new-zona',[

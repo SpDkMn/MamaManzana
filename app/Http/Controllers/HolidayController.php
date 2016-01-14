@@ -78,7 +78,7 @@ class HolidayController extends Controller
      */
     public function update(UpdateHolidayRequest $request, $id)
     {
-        $holiday = Holiday::find($id);
+        $holiday = Holiday::findOrFail($id);
         $holiday->day = $request->day;
         $holiday->month = $request->month;
         $holiday->save();
@@ -92,7 +92,7 @@ class HolidayController extends Controller
      */
     public function destroy($id)
     {
-        $holiday = Holiday::find($id);
+        $holiday = Holiday::findOrFail($id);
         $holiday->delete();
     }
 }

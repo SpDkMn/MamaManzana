@@ -81,7 +81,7 @@ class ContactInformationController extends Controller
      */
     public function update(UpdateContactInformationRequest $request)
     {
-        $contactInformation = ContactInformation::find(1);
+        $contactInformation = ContactInformation::findOrFail(1);
         $contactInformation->email = $request->email;
         $contactInformation->phone = $request->phone;
         $contactInformation->address = $request->address;
@@ -98,7 +98,7 @@ class ContactInformationController extends Controller
      */
     public function destroy($id)
     {
-        $contactInformation = ContactInformation::find($id);
+        $contactInformation = ContactInformation::findOrFails($id);
         $contactInformation->delete();
     }
 }

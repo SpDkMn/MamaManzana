@@ -79,7 +79,7 @@ class TurnController extends Controller
      */
     public function update(UpdateTurnRequest $request, $id)
     {
-        $turn = Turn::find($id);
+        $turn = Turn::findOrFail($id);
         $turn->day = $request->day;
         $turn->start_time = $request->start_time;
         $turn->finish_time = $request->fnish_time;
@@ -94,7 +94,7 @@ class TurnController extends Controller
      */
     public function destroy($id)
     {
-        $turn = Turn::find($id);
+        $turn = Turn::findOrFail($id);
         $tunr->delete();
     }
 }

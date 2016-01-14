@@ -9,18 +9,18 @@ class Zones extends Model
     protected $table = 'zones';
 
     public function city(){
-    	$this->belongsTo('MamaManzana\City');
+    	return $this->belongsTo('MamaManzana\City');
     }
 
     public function states(){
-    	$this->belongsTo('MamaManzana\States');
+    	return $this->belongsTo('MamaManzana\States');
     }
 
     public function counties(){
-    	$this->belongsTo('MamaManzana\Country');
+    	return $this->belongsTo('MamaManzana\Country');
     }
 
     public function shippingCosts(){
-    	$this->hasOne('MamaManzana\ShippingCost');
+    	return $this->hasOne('MamaManzana\ShippingCost','zone_id');
     }
 }

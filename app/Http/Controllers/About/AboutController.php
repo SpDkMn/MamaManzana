@@ -96,7 +96,7 @@ class AboutController extends Controller
      */
     public function update(UpdateAboutRequest $request)
     {
-        $about = About::find(1);
+        $about = About::findOrFail(1);
         if (isset($request->title)){
             $about->title = $request->title;
         }
@@ -127,7 +127,7 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-        $about = About::find($id);
+        $about = About::findOrFail($id);
         $aboutMeta = $about->meta;
         $aboutImg = $about->img;
         $aboutMeta->delete();

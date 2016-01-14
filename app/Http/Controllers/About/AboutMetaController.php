@@ -80,7 +80,7 @@ class AboutMetaController extends Controller
      */
     public function update(UpdateAboutMetaRequest $request)
     {
-        $aboutMeta = AboutMeta::find(1);
+        $aboutMeta = AboutMeta::findOrFail(1);
 
         $aboutMeta->title = $request->title;
         $aboutMeta->keywords = $request->keywords;
@@ -98,7 +98,7 @@ class AboutMetaController extends Controller
      */
     public function destroy($id)
     {
-        $aboutMeta = AboutMeta::find($id);
+        $aboutMeta = AboutMeta::findOrFail($id);
         $aboutMeta->delete();
     }
 }

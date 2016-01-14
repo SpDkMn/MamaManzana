@@ -76,7 +76,7 @@ class AboutImgController extends Controller
      */
     public function edit($id)
     {
-        $aboutImg = AboutImg::find($id);
+        $aboutImg = AboutImg::findOrFail($id);
         $aboutImg->about_id = $request->about_id;
         if(Input::hasFile('about_img')){
             $file = Input::file('about_img');
@@ -99,7 +99,7 @@ class AboutImgController extends Controller
      */
     public function update(UpdateAboutImgRequest $request)
     {
-      $aboutImg = AboutImg::find(1);
+      $aboutImg = AboutImg::findOrFail(1);
 
       if(Input::hasFile('about_img')){
           $file = Input::file('about_img');
@@ -122,7 +122,7 @@ class AboutImgController extends Controller
      */
     public function destroy($id)
     {
-        $aboutImg = AboutImg::find($id);
+        $aboutImg = AboutImg::findOrFail($id);
         $aboutImg->delete();
     }
 }

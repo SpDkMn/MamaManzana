@@ -79,7 +79,7 @@ class ProductMetaController extends Controller
      */
     public function update(UpdateProductMetaRequest $request, $id)
     {
-        $productMeta = ProductMeta::find($id);
+        $productMeta = ProductMeta::findOrFail($id);
         $productMeta->title = $request->title;
         $productMeta->description = $request->description;
         $productMeta->keywords = $request->keywords;
@@ -94,7 +94,7 @@ class ProductMetaController extends Controller
      */
     public function destroy($id)
     {
-        $productMeta = ProductMeta::find($id);
+        $productMeta = ProductMeta::findOrFail($id);
         $productMeta->delete();
     }
 }

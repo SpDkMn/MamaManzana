@@ -80,7 +80,7 @@ class CategoryMetaController extends Controller
      */
     public function update(UpdateCategoryMetaRequest $request, $id)
     {
-        $categoryMeta = CategoryMeta::find($id);
+        $categoryMeta = CategoryMeta::findOrFail($id);
         $categoryMeta->title = $request->title;
         $categoryMeta->description = $request->description;
         $categoryMeta->keywords = $request->keywords;
@@ -95,7 +95,7 @@ class CategoryMetaController extends Controller
      */
     public function destroy($id)
     {
-        $categoryMeta = CategoryMeta::find($id);
+        $categoryMeta = CategoryMeta::findOrFail($id);
         $categoryMeta->delete();
     }
 }

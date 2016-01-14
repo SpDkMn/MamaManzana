@@ -24,7 +24,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
+        $setting = Setting::findOrFail(1);
         return view('Admin.pages.settings',$setting);
     }
 
@@ -112,7 +112,7 @@ class SettingController extends Controller
     }
 
     public function patchSetting(SettingsRequest $request){
-      $setting = Setting::find(1);
+      $setting = Setting::findOrFail(1);
 
       $setting->email_order = $request->email_order;
       $setting->phrase = $request->phrase;
@@ -122,7 +122,7 @@ class SettingController extends Controller
     }
 
     public function patchSettingMeta(SettingsMetaRequest $request){
-      $setting = Setting::find(1);
+      $setting = Setting::findOrFail(1);
 
       $setting->title = $request->title;
       $setting->keywords = $request->keywords;
@@ -133,7 +133,7 @@ class SettingController extends Controller
     }
 
     public function patchLogo(Request $request){
-      $setting = Setting::find(1);
+      $setting = Setting::findOrFail(1);
 
       if(Input::hasFile('logo')){
           $file = Input::file('logo');
@@ -150,7 +150,7 @@ class SettingController extends Controller
     }
 
     public function patchFooter(Request $request){
-      $setting = Setting::find(1);
+      $setting = Setting::findOrFail(1);
 
       if(Input::hasFile('footer')){
           $file = Input::file('footer');
@@ -167,7 +167,7 @@ class SettingController extends Controller
     }
 
     public function patchFavicon(Request $request){
-      $setting = Setting::find(1);
+      $setting = Setting::findOrFail(1);
 
       if(Input::hasFile('favicon')){
           $file = Input::file('favicon');
@@ -192,7 +192,7 @@ class SettingController extends Controller
      */
     public function update(UpdateSettingRequest $request, $id)
     {
-        $setting = Setting::find($id);
+        $setting = Setting::findOrFail($id);
         $setting->title = $request->title;
         $setting->keywords = $request->keywords;
         $setting->description = $request->description;
@@ -245,7 +245,7 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        $setting = Setting::find($id);
+        $setting = Setting::findOrFail($id);
         $setting->delete();
     }
 }

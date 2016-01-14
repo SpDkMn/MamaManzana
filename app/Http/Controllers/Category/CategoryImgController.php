@@ -87,7 +87,7 @@ class CategoryImgController extends Controller
      */
     public function update(UpdateCategoryImgRequest $request, $id)
     {
-        $categoryImg = CategoryImg::find($id);
+        $categoryImg = CategoryImg::findOrFail($id);
         if(Input::hasFile('category_img')){
             $file = Input::file('category_img');
             $fileName = $file->getClientOriginalName();
@@ -108,7 +108,7 @@ class CategoryImgController extends Controller
      */
     public function destroy($id)
     {
-        $categoryImg = CategoryImg::find($id);
+        $categoryImg = CategoryImg::findOrFail($id);
         $categoryImg->delete();
     }
 }
