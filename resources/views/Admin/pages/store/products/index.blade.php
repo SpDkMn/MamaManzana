@@ -82,7 +82,7 @@
         $(document).on('click', '.delete',function (e) {
           $('#modales').empty();
           $.get(
-            'http://mamamanzana.app/admin/product/delete',
+            '{{route('admin_delete_product_path')}}',
             {id:$(this).data('id')},
             function(htmlexterno){
               $("#modales").html(htmlexterno);

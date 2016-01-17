@@ -24,7 +24,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        return view('Admin.pages.sliders.index');
+        return view('Admin.pages.Sliders.index');
     }
 
     /**
@@ -134,7 +134,7 @@ class SliderController extends Controller
 
     public function delete(Request $request)
     {
-      return view('Admin.pages.sliders.modal_delete',['id'=>$request->id]);
+      return view('Admin.pages.Sliders.modal_delete',['id'=>$request->id]);
     }
     /**
      * Remove the specified resource from storage.

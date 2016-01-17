@@ -80,7 +80,7 @@
         </section><!-- /.content -->
 
 <div id='modales'></div>
-@include('Admin.pages.sliders.modal_new')
+@include('Admin.pages.Sliders.modal_new')
 
 <section class="content">
   <div class="row">
@@ -176,7 +176,7 @@ $('#sliders-data').DataTable({
   $(document).on('click', '.delete',function (e) {
     $('#modales').empty();
     $.get(
-      'http://mamamanzana.app/admin/sliders/delete',
+      '{{route('admin_delete_sliders_path')}}',
       {id:$(this).data('id')},
       function(htmlexterno){
         $("#modales").html(htmlexterno);
