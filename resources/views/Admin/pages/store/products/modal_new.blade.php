@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Nueva Categoria</h4>
+          <h4 class="modal-title">Nuevo Producto</h4>
         </div>
         <form action="{{ route('admin_new_product_path')}}" method="POST" enctype="multipart/form-data">
           <div class="modal-body">
@@ -13,6 +13,10 @@
               <div class="form-group">
                 <label for="name">Nombre del producto</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Ingresa nombre del producto">
+              </div>
+              <div class="form-group">
+                <label for="name">URL</label>
+                <input type="text" class="form-control" id="slug" name="slug" placeholder="Ingresa la url">
               </div>
               <div class="form-group">
                 <label>Descripción</label>

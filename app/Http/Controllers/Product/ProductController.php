@@ -54,6 +54,8 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->short_description = $request->short_description;
         $product->cost = $request->cost;
+        $product->slug = $request->slug;
+
         $product->save();
 
         $productMeta = new ProductMeta;
@@ -124,7 +126,8 @@ class ProductController extends Controller
       $product->description = $request->description;
       $product->short_description = $request->short_description;
       $product->cost = $request->cost;
-
+      $product->slug = $request->slug;
+      
       $product->save();
 
       $productMeta = $product->meta;

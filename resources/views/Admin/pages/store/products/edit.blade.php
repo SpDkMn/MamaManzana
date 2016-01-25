@@ -40,6 +40,10 @@
               <input type="text" class="form-control" id="name" name="name" value="{{$product->name}}" placeholder="Ingresa nombre del producto">
             </div>
             <div class="form-group">
+              <label for="name">URL</label>
+              <input type="text" class="form-control" id="slug" name="slug" value="{{$product->slug}}" placeholder="Ingresa la url">
+            </div>
+            <div class="form-group">
               <label>Descripción</label>
               <textarea class="form-control" id="description" name="description" rows="3" placeholder="Descripción">{{$product->description}}</textarea>
             </div>
