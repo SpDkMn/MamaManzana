@@ -33,7 +33,7 @@ class AuthController extends Controller {
                 $u->save();
             }
             Auth::login($u);
-            return redirect('/');
+            return redirect()->back();
         } else {
             return 'something went wrong';
         }

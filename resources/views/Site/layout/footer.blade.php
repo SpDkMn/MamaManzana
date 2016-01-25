@@ -16,7 +16,7 @@
         <li><a href="pedidos.html">PEDIDOS</a></li>
         <li @if(Request::is('contacto') )class="active"@endif><a href="{{route('contact_path')}}">CONTACTO</a></li>
       </ul>
-      <img class="img-responsive" src="app/img/mustache-w.png" alt="">
+      <img class="img-responsive" src="{{asset('app/img/mustache-w.png')}}" alt="">
     </div>
     <ul class="nav nav_social">
       @foreach($socialNetwork as $sn )

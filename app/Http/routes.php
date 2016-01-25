@@ -23,39 +23,37 @@ Route::get('/login/callback/{provider?}',[
 
 Route::get('/', [
   'as'  =>  'home_path',
-  function () {
-    $metadata = MamaManzana\Setting::findOrFail(1);
-    $categorias = MamaManzana\Category::with('img')->where('active',1)->where('deleted',0)->get();
-    $contactInformation = MamaManzana\ContactInformation::findOrFail(1);
-    $sliders = MamaManzana\Slider::where('active',1)->where('deleted',0)->get();
-    return view('Site.pages.index',['metadata' => $metadata,'categorias'=>$categorias,'contactInformation'=>$contactInformation, 'sliders' => $sliders]);
-  }
+  'uses' => 'FrontController@index',
 ]);
 
 Route::get('/nosotros', [
   'as'  =>  'nosotros_path',
-  function () {
-    $metadata = MamaManzana\AboutMeta::findOrFail(1);
-    $about = MamaManzana\About::findOrFail(1);
-    return view('Site.pages.nosotros',['metadata' => $metadata,'about'=>$about]);
-  }
+  'uses' => 'FrontController@about',
 ]);
 
 Route::get('/categorias', [
   'as'  =>  'category_path',
-  function () {
-    return view('Site.pages.categoria');
-  }
+  'uses' => 'FrontController@categorias',
+]);
+
+Route::get('/categoria/{slug}',[
+  'as' => 'category_slug_path',
+  'uses' => 'FrontController@categoriaSlug',
+]);
+
+Route::get('/producto/{slug}',[
+  'as' => 'productos_path',
+  'uses' => 'FrontController@producto',
 ]);
 
 Route::get('/contacto', [
   'as'  =>  'contact_path',
-  function () {
-    $contactInformation = MamaManzana\ContactInformation::findOrFail(1);
-    $metadata = $contactInformation;
-    $cities = MamaManzana\City::orderBy('name','asc')->get();
-    return view('Site.pages.contacto',['metadata' => $metadata, 'contactInformation' =>$contactInformation,'cities'=> $cities]);
-  }
+  'uses' => 'FrontController@contact',
+]);
+
+Route::post('contacto',[
+  'as' => 'contact_post_path',
+  'uses' => 'FrontController@contactPost',
 ]);
 
 /** ** */

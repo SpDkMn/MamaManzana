@@ -40,115 +40,38 @@
           </div>
         </div>
       <div class="container">
-
-        <!--div class="text-center">
-          <h1 class="title">Productos más vistos</h1>
+        <div class="text-center">
+          <h1 class="title">Productos</h1>
           <img src="app/img/mustache.png" alt="">
         </div>
         <div class="b_list">
           <span class="s-control left" id="slider-prev-prod"></span>
           <span class="s-control right" id="slider-next-prod"></span>
           <ul id="bx-products" class="nav nav_product">
+
+            @foreach($productos as $prod )
             <li>
               <div class="b_product">
                 <div class="border">
-                  <img class="img-responsive" src="app/img/apple.png" alt="">
+                  <img class="img-responsive" src="{{asset('img/product/'.$prod->img->name)}}" alt="">
                   <div class="price-product">
-                    <span>S/. 25.32</span>
+                    <span>S/. {{$prod->cost}}</span>
                   </div>
                 </div>
                 <div class="b_table">
                   <div class="b_cell">
-                    <h3>Manzanas Clásicas 1</h3>
+                    <h3>{{$prod->name}}</h3>
                   </div>
                 </div>
-                <a class="btn-view-more" href="detalle.html">VER DETALLE</a>
+                <a class="btn-view-more" href="{{route('productos_path',$prod->slug)}}">VER DETALLE</a>
               </div>
             </li>
-            <li>
-              <div class="b_product">
-                <div class="border">
-                  <img class="img-responsive" src="app/img/apple.png" alt="">
-                  <div class="price-product">
-                    <span>S/. 25.32</span>
-                  </div>
-                </div>
-                <div class="b_table">
-                  <div class="b_cell">
-                    <h3>Manzanas de Celebración 2</h3>
-                  </div>
-                </div>
-                <a class="btn-view-more" href="detalle.html">VER DETALLE</a>
-              </div>
-            </li>
-            <li>
-              <div class="b_product">
-                <div class="border">
-                  <img class="img-responsive" src="app/img/apple.png" alt="">
-                  <div class="price-product">
-                    <span>S/. 25.32</span>
-                  </div>
-                </div>
-                <div class="b_table">
-                  <div class="b_cell">
-                    <h3>Manzanas Gourmet 3</h3>
-                  </div>
-                </div>
-                <a class="btn-view-more" href="detalle.html">VER DETALLE</a>
-              </div>
-            </li>
-            <li>
-              <div class="b_product">
-                <div class="border">
-                  <img class="img-responsive" src="app/img/apple.png" alt="">
-                  <div class="price-product">
-                    <span>S/. 25.32</span>
-                  </div>
-                </div>
-                <div class="b_table">
-                  <div class="b_cell">
-                    <h3>Manzanas Corporativas 4</h3>
-                  </div>
-                </div>
-                <a class="btn-view-more" href="detalle.html">VER DETALLE</a>
-              </div>
-            </li>
-            <li>
-              <div class="b_product">
-                <div class="border">
-                  <img class="img-responsive" src="app/img/apple.png" alt="">
-                  <div class="price-product">
-                    <span>S/. 25.32</span>
-                  </div>
-                </div>
-                <div class="b_table">
-                  <div class="b_cell">
-                    <h3>Manzanas Corporativas 5</h3>
-                  </div>
-                </div>
-                <a class="btn-view-more" href="detalle.html">VER DETALLE</a>
-              </div>
-            </li>
-            <li>
-              <div class="b_product">
-                <div class="border">
-                  <img class="img-responsive" src="app/img/apple.png" alt="">
-                  <div class="price-product">
-                    <span>S/. 25.32</span>
-                  </div>
-                </div>
-                <div class="b_table">
-                  <div class="b_cell">
-                    <h3>Manzanas Corporativas 6</h3>
-                  </div>
-                </div>
-                <a class="btn-view-more" href="detalle.html">VER DETALLE</a>
-              </div>
-            </li>
+            @endforeach
+
           </ul>
-        </div-->
+        </div>
         <div class="text-center">
-          <h1 class="title">Categorías más vistas</h1>
+          <h1 class="title">Categorías</h1>
           <img src="{{asset('app/img/mustache.png')}}" alt="">
         </div>
         <div class="b_list">
@@ -166,7 +89,7 @@
                     <h3>{{$cat->name}}</h3>
                   </div>
                 </div>
-                <a class="btn-view-more" href="categoria.html">VER CATEGORÍA</a>
+                <a class="btn-view-more" href="{{route('category_slug_path',$cat->slug)}}">VER CATEGORÍA</a>
               </div>
             </li>
             @endforeach

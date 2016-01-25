@@ -20,7 +20,7 @@ class Category extends Model
 
     public function products()
     {
-      return $this->belongsToMany('MamaManzana\Products','categories_products');
+      return $this->belongsToMany('MamaManzana\Product','categories_products');
     }
 
 }

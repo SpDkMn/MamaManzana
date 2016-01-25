@@ -17,110 +17,21 @@
     <div class="content-category clearfix">
       <div class="container">
         <ul class="nav nav_product">
+          @foreach($categorias as $cat )
           <li>
             <div class="b_product">
               <div class="border">
-                <img class="img-responsive" src="app/img/apple.png" alt="image categoria">
+                <img class="img-responsive" src="{{asset('img/category/'.$cat->img->name)}}" alt="">
               </div>
               <div class="b_table">
                 <div class="b_cell">
-                  <h3>Manzanas Clásicas</h3>
+                  <h3>{{$cat->name}}</h3>
                 </div>
               </div>
-              <a class="pay-product" href="categoria.html">VER MÁS</a>
+              <a class="pay-product" href="{{route('category_slug_path',$cat->slug)}}">VER MÁS</a>
             </div>
           </li>
-          <li>
-            <div class="b_product">
-              <div class="border">
-                <img class="img-responsive" src="app/img/apple.png" alt="image categoria">
-              </div>
-              <div class="b_table">
-                <div class="b_cell">
-                  <h3>Manzanas Gourmet</h3>
-                </div>
-              </div>
-              <a class="pay-product" href="categoria.html">VER MÁS</a>
-            </div>
-          </li>
-          <li>
-            <div class="b_product">
-              <div class="border">
-                <img class="img-responsive" src="app/img/apple.png" alt="image categoria">
-              </div>
-              <div class="b_table">
-                <div class="b_cell">
-                  <h3>Manzanas Corporativas</h3>
-                </div>
-              </div>
-              <a class="pay-product" href="categoria.html">VER MÁS</a>
-            </div>
-          </li>
-          <li>
-            <div class="b_product">
-              <div class="border">
-                <img class="img-responsive" src="app/img/apple.png" alt="image categoria">
-              </div>
-              <div class="b_table">
-                <div class="b_cell">
-                  <h3>Manzanas de Celebración</h3>
-                </div>
-              </div>
-              <a class="pay-product" href="categoria.html">VER MÁS</a>
-            </div>
-          </li>
-          <li>
-            <div class="b_product">
-              <div class="border">
-                <img class="img-responsive" src="app/img/apple.png" alt="image categoria">
-              </div>
-              <div class="b_table">
-                <div class="b_cell">
-                  <h3>Manzanas Clásicas</h3>
-                </div>
-              </div>
-              <a class="pay-product" href="categoria.html">VER MÁS</a>
-            </div>
-          </li>
-          <li>
-            <div class="b_product">
-              <div class="border">
-                <img class="img-responsive" src="app/img/apple.png" alt="image categoria">
-              </div>
-              <div class="b_table">
-                <div class="b_cell">
-                  <h3>Manzanas Gourmet</h3>
-                </div>
-              </div>
-              <a class="pay-product" href="categoria.html">VER MÁS</a>
-            </div>
-          </li>
-          <li>
-            <div class="b_product">
-              <div class="border">
-                <img class="img-responsive" src="app/img/apple.png" alt="image categoria">
-              </div>
-              <div class="b_table">
-                <div class="b_cell">
-                  <h3>Manzanas Corporativas</h3>
-                </div>
-              </div>
-              <a class="pay-product" href="categoria.html">VER MÁS</a>
-            </div>
-          </li>
-          <li>
-            <div class="b_product">
-              <div class="border">
-                <img class="img-responsive" src="app/img/apple.png" alt="image categoria">
-              </div>
-              <div class="b_table">
-                <div class="b_cell">
-                  <h3>Manzanas de Celebración</h3>
-                </div>
-              </div>
-              <a class="pay-product" href="categoria.html">VER MÁS</a>
-            </div>
-          </li>
+          @endforeach
         </ul>
       </div>
     </div>
