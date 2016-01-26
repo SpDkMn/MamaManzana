@@ -4,6 +4,8 @@ namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Mail;
+use Illuminate\Support\Facades\Auth as Auth;
 use MamaManzana\Http\Requests;
 use MamaManzana\Http\Controllers\Controller;
 use MamaManzana\Contact as Contact;
@@ -15,6 +17,7 @@ use MamaManzana\AboutMeta as AboutMeta;
 use MamaManzana\About as About;
 use MamaManzana\City as City;
 use MamaManzana\Product as Product;
+use MamaManzana\Http\Requests\Contacts\CreateContactRequest as CreateContactRequest;
 
 class FrontController extends Controller
 {
@@ -67,13 +70,51 @@ class FrontController extends Controller
     return view('Site.pages.contacto',['metadata' => $metadata, 'contactInformation' =>$contactInformation,'cities'=> $cities]);
   }
 
-  public function contactPost(Request $request){
-    $contact = new Contact;
+  public function contactPost(CreateContactRequest $request){
+    /*$contact = new Contact;
     $contact->name = $request->first_name;
     $contact->email = $request->email;
     $contact->message = $request->message;
     $contact->city_id = $request->city;
+    $contact->save();*/
+    $contact = new Contact;
+    $contactInformation = ContactInformation::find(1);
+    $setting = Setting::findOrFail(1);
+
+    if(!is_null(Auth::user())){
+      $contact->user_id = Auth::user()->id;
+    }
+
+    $contact->city_id = $request->city;
+    $contact->from = $request->email;
+    $contact->from_name = $request->first_name;
+    $contact->to = 'pdiazstam@gmail.com';//$contactInformation->email;
+    $contact->to_name =$setting->title . ' - Contacto' ;
+    $contact->subject = $setting->title . ' - Mensaje Contacto - Web';
+    $contact->message = $request->message;
     $contact->save();
+
+      $to = [
+          'address' => 'pdiazstam@gmail.com',//$contactInformation->email,
+          'name' => $setting->title . ' - Contacto',
+      ];
+      $from = [
+          'address' => $contact->from,
+          'name' => $contact->from_name,
+      ];
+      $subject = $setting->title . ' - Mensaje Contacto - Web';
+
+      $data = [
+          'name' => $contact->from_name,
+          'email' => $contact->from,
+          'message' => $contact->message,
+      ];
+      return Mail::send('emails.contact_email', $data, function ($message) use ($to, $from, $subject) {
+          $message
+                  ->from($from['address'], $from['name'])
+                  ->to($to['address'], $to['name'])
+                  ->subject($subject);
+      });
 
   }
 

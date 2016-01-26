@@ -24,8 +24,8 @@ class CreateContactRequest extends Request
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'name' => 'required|min:3',
+            'user_id' => 'exists:users,id',
+            'first_name' => 'required|min:3',
             'email' => 'required|email',
             'message' => 'required|min:4'
         ];
