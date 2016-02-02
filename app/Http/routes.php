@@ -64,9 +64,11 @@ Route::get('/pedidocateg', function () {
 Route::get('/pedidos', function () {
     return view('Site.pages.pedidos');
 });
-Route::get('/perfil', function () {
-    return view('Site.pages.perfil');
-});
+Route::get('/perfil', [
+  'as' => 'perfil_path',
+  'uses' => 'FrontController@perfil',
+  ]);
+
 Route::get('/producto', function () {
     return view('Site.pages.producto');
 });

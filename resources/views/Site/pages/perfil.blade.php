@@ -1,63 +1,90 @@
 @extends('Site.layout.template')
-@section('body')
-  @include('Site.layout.nav')
-<div class="bgall" style="background-image: url(app/img/bg_us.png)"></div>
-  <section class="section-perfil">
+
+@section('content')
+<section class="section-perfil">
     <div class="container">
-      <div class="text-center">
-        <h1 class="title">¡HOLA OSCAR!</h1>
+      <div class="text-left">
+        <h1 class="title">Mi Cuenta</h1>
       </div>
-      <div class="description">
-      <div class="img-perfil">
-        <div class="img-user" style="background-image: url(app/img/imgmsj.png)">
+      <div class="clearfix container-account">
+        <div class="account-navigation margin-large-top">
+          <ul class="account-navigation-ul">
+            <li>
+              <a href=""><i class="fa fa-user"></i> <span>Mi Perfil</span></a>
+              <ul class="profile-items">
+                <li><a href="">Mis datos personales</a></li>
+                <li><a href="">Mis direcciones</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href=""><i class="fa fa-truck"></i><span>Mis pedidos</span></a>
+            </li>
+          </ul>
         </div>
-        <div class="fileUpload">
-          <span><i class="fa fa-camera fa-2x"></i></span>
-          <input class="upload" type="file" name="pic" accept="image/*">
+        <div class="account-section">
+          <div class="category-title">
+            <h2>Mi perfil</h2>
+          </div>
+          <div class="section-content">
+            <div class="category-subtitle">
+              <h3>Mis Datos Personales</h3>
+            </div>
+            <form class="form-profile" action="">
+              <div class="width-content">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label for="">Nombre</label>
+                      <input type="text" class="form-control" value="{{Auth::user()->name}}">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label for="">Sexo</label>
+                      <div class="clearfix">
+                        <div class="col-radio" autocomplete="sex">
+                          <input type="radio" id="profile_gender_0" name="genre" required="required" class="custom-radio" value="female" @if(Auth::user()->gender == 'female') checked="checked" @endif>
+                          <label for="profile_gender_0" class="radio-text">
+                            <span class="radio-skin"></span>Femenino
+                          </label>
+                        </div>
+                        <div class="col-radio" autocomplete="sex">
+                          <input type="radio" id="profile_gender_1" name="genre" required="required" class="custom-radio" value="male" @if(Auth::user()->gender == 'male') checked="checked" @endif>
+                          <label for="profile_gender_1" class="radio-text">
+                            <span class="radio-skin"></span>Masculino
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label for="">Fecha de nacimiento</label>
+                      <input type="date" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <label for="">Email</label>
+                      <input type="email" class="form-control f-email" value="{{Auth::user()->email}}" readonly="readonly">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                      <a class="ch-pass" href="">Cambiar contraseña</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="submit" class="btn-onsubmit">GUARDAR CAMBIOS</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-        <form action="" class="form-horizontal form-perfil">
-          <div class="text-center">
-            <h5>DATOS</h5>
-          </div>
-          <div class="form-gp">
-            <label for="first-name" class="control-label">Nombre:</label>
-            <div class="col-form">
-              <input type="text" class="form-control" id="first-name" name="first-name">
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="last-name" class="control-label">Apellido:</label>
-            <div class="col-form">
-              <input type="text" class="form-control" id="last-name" name="last-name">
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="amount" class="control-label">Email:</label>
-            <div class="col-form">
-              <input type="email" class="form-control" id="email" name="email">
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="address" class="control-label">Dirección:</label>
-            <div class="col-form">
-              <input type="text" class="form-control" id="address" name="address">
-            </div>
-          </div> 
-          <div class="form-gp">
-            <div class="text-center">
-              <button type="button" class="btn-send">editar</button>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
   </section>
-  <div class="up-effect">
-    <div class="container">
-      <a class="btn-up" href="#">
-        <i class="fa fa-chevron-up fa-lg"></i>
-      </a>
-    </div>
-  </div>
   @stop

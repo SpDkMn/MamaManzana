@@ -118,4 +118,9 @@ class FrontController extends Controller
 
   }
 
+  public function perfil(){
+    $metadata = Setting::findOrFail(1);
+    return view('Site.pages.perfil',['metadata' => $metadata]);
+  }
+
 }
