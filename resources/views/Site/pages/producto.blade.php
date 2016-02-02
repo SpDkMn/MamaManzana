@@ -38,12 +38,14 @@
                         </div>
                       </form>
                       @else
-                      <form class="form-quantity" action="">
+                      <form class="form-quantity" method="POST" action="{{route('post_pedido_path')}}">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="producto" value="{{$producto->id}}">
                         <div class="row">
                           <div class="col-xs-4 col-sm-2 col-md-3">
                             <div class="form-group input-quantity">
                               <h4>Cant.</h4>
-                              <select name="" id="" class="form-control">
+                              <select name="cantidad" id="cantidad" class="form-control">
                                 @for($i=1; $i< 11; $i++)
                                 <option value="{{$i}}">{{$i}}</option>
                                 @endfor
@@ -53,7 +55,7 @@
                         </div>
                         <div class="row">
                           <div class="col-xs-12 text-center">
-                            <a href="list-producto.html" class="btn-add">Agregar al Carrito</a>
+                            <button type="submit" class="btn-add">Agregar al Carrito</button>
                           </div>
                         </div>
                       </form>

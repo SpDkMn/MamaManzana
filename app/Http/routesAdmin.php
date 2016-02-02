@@ -48,8 +48,7 @@ Route::group(['as' => 'admin_', 'prefix' => 'admin', 'middleware' => 'authAdmin'
 
   Route::get('inbox',[
     'as'  => 'inbox_path',
-    //'uses'=> ''
-    function(){return view('Admin.pages.inbox');}
+    'uses'=> 'ContactController@index',
   ]);
 
   Route::get('inbox/compose',[
@@ -60,8 +59,8 @@ Route::group(['as' => 'admin_', 'prefix' => 'admin', 'middleware' => 'authAdmin'
 
   Route::get('inbox/{id}',[
     'as'  => 'inbox_read_path',
-    //'uses'=> ''
-    function(){return view('Admin.pages.read_mail');}
+    'uses'=> 'ContactController@show',
+    //function(){return view('Admin.pages.read_mail');}
   ]);
 
   /**

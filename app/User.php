@@ -46,4 +46,8 @@ class User extends Model implements AuthenticatableContract,
     {
       return ($this->admin == 1);
     }
+
+    public function shopping_cart(){
+      return $this->hasMany('MamaManzana\ShoppingCart','user_id','id');
+    }
 }

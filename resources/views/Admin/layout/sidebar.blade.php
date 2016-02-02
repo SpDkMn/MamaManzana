@@ -31,7 +31,7 @@ use App\Http\Requests;
       <li @if(Request::is('admin/inbox/*') || Request::is('admin/inbox')) class="active" @endif>
         <a href="{{ route('admin_inbox_path') }}">
           <i class="fa fa-envelope"></i> <span>Mensajes</span>
-          <small class="label pull-right bg-yellow">12</small>
+          <small class="label pull-right bg-yellow">{{count($contacts)}}</small>
         </a>
       </li>
       <li class="treeview @if(Request::is('admin/categories') || Request::is('admin/products')) active @endif">

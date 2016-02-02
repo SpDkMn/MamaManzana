@@ -22,7 +22,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+      $count = count(Contact::where('read',0)->where('trash',0)->where('reply',0)->where('deleted',0)->get());
+      $contacts = Contact::where('trash',0)->where('reply',0)->where('deleted',0)->get();
+        return view('Admin.pages.inbox',['contacts'=>$contacts,'count'=>$count]);
     }
 
     /**
@@ -45,8 +47,8 @@ class ContactController extends Controller
     {
         $contact = new Contat;
         $contact->user_id = $request->user_id;
-        $contat->name => $request->name;
-        $contat->email => $request->email;
+        $contat->name = $request->name;
+        $contat->email = $request->email;
         $contact->message = $request->message;
         $contact->save();
 
@@ -84,7 +86,11 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+      $contact = Contact::findOrFail($id);
+      $contact->read = 1;
+      $contact->save();
+      $contacts = Contact::where('read',0)->where('trash',0)->where('reply',0)->where('deleted',0)->get();
+      return view('Admin.pages.read_mail',['contact'=>$contact,'count'=>count($contacts)]);
     }
 
     /**

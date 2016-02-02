@@ -123,4 +123,8 @@ class FrontController extends Controller
     return view('Site.pages.perfil',['metadata' => $metadata]);
   }
 
+  public function postPedido(Request $request){
+    
+  }
+
 }

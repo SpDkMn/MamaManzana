@@ -5,6 +5,7 @@ namespace MamaManzana\Http\Controllers;
 //use Socialite;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use MamaManzana\User as User;
+use MamaManzana\ShoppingCart as ShoppingCart;
 use Illuminate\Support\Facades\Auth as Auth;
 
 class AuthController extends Controller {
@@ -33,6 +34,14 @@ class AuthController extends Controller {
                 $u->save();
             }
             Auth::login($u);
+            $cart = ShoppingCart::where('user_id',$u->id)->where('order',0)->first();
+            if(is_null($cart)){
+              $cart = new ShoppingCart;
+              $cart->user_id = $u->id;
+              $cart->sub_total = 0.0;
+              $cart->order = 0;
+              $cart->save();
+            }
             return redirect()->back();
         } else {
             return 'something went wrong';
