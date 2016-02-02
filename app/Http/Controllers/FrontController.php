@@ -4,6 +4,7 @@ namespace MamaManzana\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use Mail;
 use Illuminate\Support\Facades\Auth as Auth;
 use MamaManzana\Http\Requests;
@@ -15,6 +16,7 @@ use MamaManzana\ContactInformation as ContactInformation;
 use MamaManzana\Slider as Slider;
 use MamaManzana\AboutMeta as AboutMeta;
 use MamaManzana\About as About;
+use MamaManzana\ShoppingCart as ShoppingCart;
 use MamaManzana\City as City;
 use MamaManzana\Product as Product;
 use MamaManzana\Http\Requests\Contacts\CreateContactRequest as CreateContactRequest;
@@ -124,7 +126,51 @@ class FrontController extends Controller
   }
 
   public function postPedido(Request $request){
-    
+    $producto = Product::findOrFail($request->producto);
+    $cart = ShoppingCart::where('user_id',Auth::user()->id)->where('order',0)->with('products')->first();
+    if(is_null($cart)){
+      $cart = new ShoppingCart;
+      $cart->user_id = $u->id;
+      $cart->sub_total = 0.0;
+      $cart->order = 0;
+      $cart->save();
+    }
+    $productos = $cart->products;
+    foreach($productos as $p){
+      if($p->id == $producto->id){
+        DB::table('products_shopping_carts')
+          ->where('product_id', $producto->id)
+          ->where('shopping_cart_id', $cart->id)
+          ->increment('count', $request->cantidad);
+        DB::table('products_shopping_carts')
+          ->where('product_id', $producto->id)
+          ->where('shopping_cart_id', $cart->id)
+          ->increment('amount', $producto->cost*$request->cantidad);
+        $cart->sub_total += $producto->cost*$request->cantidad;
+        $cart->save();
+        return redirect()->route('lista_pedido_path');
+      }
+    }
+    DB::table('products_shopping_carts')->insert([
+        'product_id' =>$producto->id,
+        'shopping_cart_id'=>$cart->id,
+        'count' =>$request->cantidad,
+        'cost'=>$producto->cost,
+        'amount'=>$producto->cost*$request->cantidad,
+    ]);
+    $cart->sub_total += $producto->cost*$request->cantidad;
+    $cart->save();
+    return redirect()->route('lista_pedido_path');
   }
 
+  public function listaPedido(){
+    $metadata = Setting::findOrFail(1);
+    $cart = ShoppingCart::where('user_id',Auth::user()->id)->where('order',0)->first();
+    $query = DB::table('products_shopping_carts as psc')
+      ->join('products as p', 'p.id', '=', 'psc.product_id')
+      ->join('products_img as pi', 'p.id', '=', 'pi.product_id')
+      ->select('psc.product_id','psc.count','psc.cost','psc.amount','p.name','p.slug','pi.name as img')
+      ->get();
+    return view('Site.pages.lista-pedido',['metadata' => $metadata,'productos'=>$query,'cart'=>$cart]);
+  }
 }

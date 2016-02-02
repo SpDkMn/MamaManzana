@@ -61,6 +61,11 @@ Route::post('pedido',[
   'uses' => 'FrontController@postPedido'
 ]);
 
+Route::get('pedido-lista',[
+  'as' => 'lista_pedido_path',
+  'uses' => 'FrontController@listaPedido'
+]);
+
 /** ** */
 
 Route::get('/pedidocateg', function () {
