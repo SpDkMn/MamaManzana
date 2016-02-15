@@ -12,7 +12,7 @@
       <ul class="nav nav_manzana">
         <li @if(Request::is('/') )class="active"@endif><a href="{{route('home_path')}}">INICIO</a></li>
         <li @if(Request::is('nosotros') )class="active"@endif><a href="{{route('nosotros_path')}}">NOSOTROS</a></li>
-        <li @if(Request::is('categorias') )class="active"@endif><a href="{{route('category_path')}}">CATEGORIAS</a></li>
+        <li @if(Request::is('categoria*') )class="active"@endif><a href="{{route('category_path')}}">CATEGORIAS</a></li>
         <!--li><a href="pedidos.html">PEDIDOS</a></li-->
         <li @if(Request::is('contacto') )class="active"@endif><a href="{{route('contact_path')}}">CONTACTO</a></li>
       </ul>

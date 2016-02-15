@@ -73,12 +73,6 @@ class FrontController extends Controller
   }
 
   public function contactPost(CreateContactRequest $request){
-    /*$contact = new Contact;
-    $contact->name = $request->first_name;
-    $contact->email = $request->email;
-    $contact->message = $request->message;
-    $contact->city_id = $request->city;
-    $contact->save();*/
     $contact = new Contact;
     $contactInformation = ContactInformation::find(1);
     $setting = Setting::findOrFail(1);
@@ -170,7 +164,30 @@ class FrontController extends Controller
       ->join('products as p', 'p.id', '=', 'psc.product_id')
       ->join('products_img as pi', 'p.id', '=', 'pi.product_id')
       ->select('psc.product_id','psc.count','psc.cost','psc.amount','p.name','p.slug','pi.name as img')
+      ->where('shopping_cart_id',$cart->id)
       ->get();
     return view('Site.pages.lista-pedido',['metadata' => $metadata,'productos'=>$query,'cart'=>$cart]);
+  }
+
+  public function checkout(){
+    $metadata = Setting::findOrFail(1);
+    $cart = ShoppingCart::where('user_id',Auth::user()->id)->where('order',0)->first();
+    $query = DB::table('products_shopping_carts as psc')
+      ->join('products as p', 'p.id', '=', 'psc.product_id')
+      ->join('products_img as pi', 'p.id', '=', 'pi.product_id')
+      ->select('psc.product_id','psc.count','psc.cost','psc.amount','p.name','p.slug','pi.name as img')
+      ->where('shopping_cart_id',$cart->id)
+      ->get();
+    return view('Site.pages.pedidos',['metadata' => $metadata,'productos'=>$query,'cart'=>$cart]);
+  }
+
+  public function nuevaDireccion(){
+    $metadata = Setting::findOrFail(1);
+    return view('Site.pages.nueva_direccion',['metadata'=>$metadata]);
+  }
+
+  public function direcciones(){
+    $metadata = Setting::findOrFail(1);
+    return view('Site.pages.direcciones',['metadata'=>$metadata]);
   }
 }

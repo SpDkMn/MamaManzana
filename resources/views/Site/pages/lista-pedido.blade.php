@@ -67,7 +67,7 @@
                     <td>
                       <div class="clearfix">
                         <div class="pull-left">
-                          Subtotal (<span>2</span>)
+                          Subtotal
                         </div>
                         <div class="pull-right product-price">
                           S/. {{$cart->sub_total}}
@@ -101,7 +101,7 @@
                   </tr-->
                   <tr>
                     <td class="td-button">
-                      <a href="checkout.html" class="btn-send-cart">
+                      <a href="{{route('checkout_path')}}" class="btn-send-cart">
                         PROCESAR COMPRA
                       </a>
                     </td>

@@ -1,5 +1,9 @@
 @extends('Site.layout.template')
 
+@section('script1')
+<script src="{{asset('app/js/jquery-ui.js')}}"></script>
+@stop
+
 @section('content')
 <section class="section-perfil">
     <div class="container">

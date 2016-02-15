@@ -61,10 +61,38 @@ Route::post('pedido',[
   'uses' => 'FrontController@postPedido'
 ]);
 
+
+/**
+ * Middleware de login
+ */
 Route::get('pedido-lista',[
   'as' => 'lista_pedido_path',
   'uses' => 'FrontController@listaPedido'
 ]);
+
+Route::get('checkout',[
+  'as' => 'checkout_path',
+  'uses' => 'FrontController@checkout',
+]);
+
+Route::get('/perfil', [
+  'as' => 'perfil_path',
+  'uses' => 'FrontController@perfil',
+  ]);
+
+Route::get('/perfil/direccion/nueva',[
+  'as' => 'nueva_direccion_path',
+  'uses' => 'FrontController@nuevaDireccion',
+]);
+
+Route::get('/perfil/direcciones',[
+  'as' => 'direcciones_path',
+  'uses' => 'FrontController@direcciones',
+]);
+
+/**
+ *
+ */
 
 /** ** */
 
@@ -74,10 +102,7 @@ Route::get('/pedidocateg', function () {
 Route::get('/pedidos', function () {
     return view('Site.pages.pedidos');
 });
-Route::get('/perfil', [
-  'as' => 'perfil_path',
-  'uses' => 'FrontController@perfil',
-  ]);
+
 
 Route::get('/producto', function () {
     return view('Site.pages.producto');

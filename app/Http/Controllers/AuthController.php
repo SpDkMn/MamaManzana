@@ -32,6 +32,16 @@ class AuthController extends Controller {
                 $u->gender = $user->user['gender'];
                 $u->age_range = implode($user->user['age_range']);
                 $u->save();
+                Auth::login($u);
+                $cart = ShoppingCart::where('user_id',$u->id)->where('order',0)->first();
+                if(is_null($cart)){
+                  $cart = new ShoppingCart;
+                  $cart->user_id = $u->id;
+                  $cart->sub_total = 0.0;
+                  $cart->order = 0;
+                  $cart->save();
+                }
+                return redirect()->route('home_path');
             }
             Auth::login($u);
             $cart = ShoppingCart::where('user_id',$u->id)->where('order',0)->first();

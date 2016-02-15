@@ -19,7 +19,9 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         $factory->composer('Site.layout.header',UserComposer::class);
         $factory->composer('Site.pages.contacto',UserComposer::class);
+        $factory->composer('errors.404',UserComposer::class);
         $factory->composer('Site.layout.template',SettingComposer::class);
+        $factory->composer('errors.404',SettingComposer::class);
         $factory->composer('Admin.layout.header',MailComposer::class);
         $factory->composer('Admin.layout.sidebar',MailComposer::class);
     }

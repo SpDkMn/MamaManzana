@@ -1,165 +1,193 @@
 @extends('Site.layout.template')
-@section('body')
-  @include('Site.layout.nav')
-  <div class="bgall" style="background-image: url(app/img/bg_us.png)"></div>
-  <section class="section-order">
+
+@section('content')
+  <section class="section-checkout">
     <div class="container">
+
       <div class="text-center">
-        <h1 class="title">pedidos</h1>
+        <h1 class="title">Checkout</h1>
+        <img src="app/img/mustache.png" alt="mustache">
       </div>
-      <div class="description">
-        <form action="" class="form-horizontal form-order">
-          <img data-sr="enter left move 200px over .6s" class="leaf-1" src="app/img/leaf1.png" alt="leaf">
-          <img data-sr="enter right move 200px over .6s" class="leaf-2" src="app/img/leaf2.png" alt="leaf">
-          <div class="form-gp">
-            <label for="first-name" class="control-label">Nombre:</label>
-            <div class="col-form">
-              <input type="text" class="form-control" id="first-name" name="first-name">
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="amount" class="control-label">Email:</label>
-            <div class="col-form">
-              <input type="email" class="form-control" id="email" name="email">
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="amount" class="control-label">Producto:</label>
-            <div class="col-form">
-              <select class="form-control">
-                <option></option>
-                <option>Manzana 1</option>
-                <option>Manzana 2</option>
-                <option>Manzana 3</option>
-                <option>Manzana 4</option>
-                <option>Manzana 5</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="amount" class="control-label">Cantidad:</label>
-            <div class="col-form">
-              <select class="form-control">
-                <option></option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="amount" class="control-label">Ocación:</label>
-            <div class="col-form">
-              <select class="form-control">
-                <option></option>
-                <option>Día de la Madre</option>
-                <option>Día del Padre</option>
-                <option>San Valentin</option>
-                <option>Semana Pascua</option>
-                <option>Navidad</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-gp">
-            <label for="repass" class="control-label">Fecha de Entrega</label>
-            <div class="col-form">
-              <div class="row">
-                <div class="col-xs-4">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+      <form action="" class="form-checkout">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <div class="b_step">
+              <div class="b_step-head">
+                <h4><span>1</span> DATOS DEL CLIENTE</h4>
+              </div>
+              <div class="b_step-body">
+                <div class="form-group">
+                  <label for="name_client">Nombre</label>
+                  <input type="text" class="form-control" id="name_client">
+                </div>
+                <div class="form-group">
+                  <label for="email_client">Emails</label>
+                  <input type="email" class="form-control" id="email_client">
+                </div>
+                <div class="form-group">
+                  <label for="phone_client">Teléfono</label>
+                  <input type="text" class="form-control" id="phone_client">
+                </div>
+                <div class="form-group">
+                  <label for="state_client">Dirección</label>
+                  <select name="" id="state_client" class="form-control mg-b">
+                    <option value="">Distrito</option>
+                    <option value="">Lima</option>
+                    <option value="">SJL</option>
+                    <option value="">Surco</option>
+                    <option value="">Molina</option>
+                  </select>
+                  <input type="text" class="form-control mg-b" id="address_client" placeholder="Dirección">
+                  <textarea name="" id="reference_client" class="form-control reference" placeholder="Referencia"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="phone_client">Fecha</label>
+                  <input type="text" class="form-control" id="date_client">
+                </div>
+                <div class="form-group">
+                  <label for="state_client">Turno de Entrega</label>
+                  <select name="" id="state_client" class="form-control">
+                    <option value="">Mañana</option>
+                    <option value="">Tarde</option>
+                    <option value="">Noche</option>
                   </select>
                 </div>
-                <div class="col-xs-4">
-                  <select class="form-control">
-                    <option>Ene</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>Abr</option>
-                    <option>May</option>
-                    <option>Jun</option>
-                    <option>Jul</option>
-                    <option>Ago</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dic</option>
-                  </select>
-                </div>
-                <div class="col-xs-4">
-                  <select class="form-control">
-                    <option>2001</option>
-                    <option>2002</option>
-                    <option>2003</option>
-                    <option>2004</option>
-                    <option>2005</option>
-                  </select>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="">
+                    Utilizar estos datos para envio
+                  </label>
                 </div>
               </div>
             </div>
-          </div> 
-          <div class="form-gp">
-            <label for="description" class="control-label">Comentario</label>
-            <div class="col-form">
-              <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-            </div>
-          </div> 
-          <div class="form-gp">
-            <div class="text-right">
-              <button id="btn-pedido" type="submit" class="btn-send" href="#mpedido">ENVIAR</button>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="b_step">
+              <div class="b_step-head">
+                <h4><span>2</span> DATOS DE ENVIO</h4>
+              </div>
+              <div class="b_step-body">
+                <div class="form-group">
+                  <label for="name_client">Nombre</label>
+                  <input type="text" class="form-control" id="name_client">
+                </div>
+                <div class="form-group">
+                  <label for="phone_client">Teléfono</label>
+                  <input type="text" class="form-control" id="phone_client">
+                </div>
+                <div class="form-group">
+                  <label for="state_client">Dirección</label>
+                  <select name="" id="state_client" class="form-control mg-b">
+                    <option value="">Distrito</option>
+                    <option value="">Lima</option>
+                    <option value="">SJL</option>
+                    <option value="">Surco</option>
+                    <option value="">Molina</option>
+                  </select>
+                  <input type="text" class="form-control mg-b" id="address_client" placeholder="Dirección">
+                  <textarea name="" id="reference_client" class="form-control reference" placeholder="Referencia"></textarea>
+                </div>
+              </div>
             </div>
           </div>
-        </form>
-      </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="b_step">
+              <div class="b_step-head">
+                <h4><span>3</span> RESUMEN</h4>
+              </div>
+              <div class="b_step-body">
+                <table class="table table-resumen">
+                  <tbody>
+                    @foreach($productos as $p)
+                    <tr>
+                      <td class="td-product">
+                        <div class="row col-product">
+                          <div class="col-xs-2">
+                            <div class="content-img">
+                              <span class="cant">{{$p->count}}</span>
+                              <img class="img-responsive" src="app/img/apple.png" alt="">
+                            </div>
+                          </div>
+                          <div class="col-xs-6">
+                            {{$p->name}}
+                          </div>
+                          <div class="col-xs-4 product-price text-right">
+                            S/. {{$p->amount}}
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                      <td>
+                        <div class="clearfix">
+                          <div class="pull-left">
+                            Subtotal
+                          </div>
+                          <div class="pull-right product-price">
+                            S/. {{$cart->sub_total}}
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="clearfix">
+                          <div class="pull-left">
+                            Envio
+                          </div>
+                          <div class="pull-right">
+                            S/. 20.00
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="clearfix">
+                          <div class="pull-left">
+                            Total
+                          </div>
+                          <div class="pull-right product-price">
+                            S/. 160.00
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="td-button">
+                        <button type="button" class="btn-send-cart">
+                          PROCESAR COMPRA
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </section>
-  <div class="up-effect">
-    <div class="container">
-      <a class="btn-up" href="#">
-        <i class="fa fa-chevron-up fa-lg"></i>
-      </a>
-    </div>
-  </div>
-  <div style="display:none">
-    <div id="mpedido" class="mpedido">
-      <h5 class="title">¡Gracias por tu pedido!</h5>
-      <span class="line"></span>
-      <p>En breve nos contactaremos contigo paraconfirmar tu pedido.</p>
-    </div>
-  </div>
   @stop
 
-  @section('script')
-  <script src="app/js/fancybox.js"></script>
-  <script type="text/javascript">
-    $(function(){
-      $(".form-order").submit(function(e){
-        e.preventDefault();
-        /*var request = $.ajax({
-          url: "pedido",
-          method: "POST",
-          data: { email : $("#epedido").val() },
-          dataType: "html"
-        });*/
-         
-        //request.success(function( msg ) {
-          $.fancybox("success",{
-            href: "#mpedido",
-            'hideOnContentClick': true,
-            padding : [0,0,0,0],
+  @section('script3')
+  <script>
+        $(function(){
+          $("#date_client").datepicker({
+            minDate: 1,
+            maxDate: 60,
+            currentText: 'Hoy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+            dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+            dateFormat: 'dd/mm/yy',
+            showMonthAfterYear: false,
+            minDate: new Date()
           });
-          
-        //});
-         
-        /*request.fail(function( jqXHR, textStatus ) {
-          alert( "Request failed: " + textStatus );
-        });*/
-      });
-    });
-  </script>
+        });
+      </script>
   @stop
