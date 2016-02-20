@@ -20,6 +20,10 @@ use MamaManzana\ShoppingCart as ShoppingCart;
 use MamaManzana\City as City;
 use MamaManzana\Product as Product;
 use MamaManzana\Http\Requests\Contacts\CreateContactRequest as CreateContactRequest;
+use MamaManzana\Http\Requests\ProfileEdit as ProfileEdit;
+use MamaManzana\Address as Address;
+use MamaManzana\Zones as Zones;
+use MamaManzana\Http\Requests\AddressCreate as AddressCreate;
 
 class FrontController extends Controller
 {
@@ -119,6 +123,16 @@ class FrontController extends Controller
     return view('Site.pages.perfil',['metadata' => $metadata]);
   }
 
+  public function perfilPost(ProfileEdit $request){
+    $u = Auth::user();
+    $u->name = $request->name;
+    $u->gender = $request->genre;
+    $u->email = $request->email;
+    $u->date = $request->date;
+    $u->save();
+    return redirect()->route('perfil_path');
+  }
+
   public function postPedido(Request $request){
     $producto = Product::findOrFail($request->producto);
     $cart = ShoppingCart::where('user_id',Auth::user()->id)->where('order',0)->with('products')->first();
@@ -183,11 +197,36 @@ class FrontController extends Controller
 
   public function nuevaDireccion(){
     $metadata = Setting::findOrFail(1);
-    return view('Site.pages.nueva_direccion',['metadata'=>$metadata]);
+    $zones = Zones::where('actived',1)->where('deleted',0)->get();
+    return view('Site.pages.nueva_direccion',['metadata'=>$metadata,'zones'=>$zones]);
+  }
+
+  public function nuevaDireccionPost(AddressCreate $request){
+    $zone = Zones::findOrFail($request->zona);
+    $address = new Address;
+    $address->user_id = Auth::user()->id;
+    $address->country_id = $zone->country_id;
+    $address->state_id = $zone->state_id;
+    $address->city_id = $zone->city_id;
+    $address->zone_id = $zone->id;
+    $address->title = $request->title;
+    $address->name_address = $request->name_address;
+    $address->last_name_address = $request->last_name_address;
+    $address->phone = $request->phone;
+    $address->other_phone = $request->other_phone;
+    $address->address = $request->address;
+    $address->reference = $request->reference;
+    $address->save();
+    return redirect()->route('direcciones_path');
   }
 
   public function direcciones(){
     $metadata = Setting::findOrFail(1);
-    return view('Site.pages.direcciones',['metadata'=>$metadata]);
+    $addresses = Address::with('zones')->with('states')->with('cities')->with('countries')->where('user_id',Auth::user()->id)->get();
+    return view('Site.pages.direcciones',['metadata'=>$metadata,'addresses'=>$addresses]);
+  }
+
+  public function deleteAddress(Request $request){
+    dd($request);
   }
 }

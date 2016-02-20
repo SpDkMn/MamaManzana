@@ -80,6 +80,11 @@ Route::get('/perfil', [
   'uses' => 'FrontController@perfil',
   ]);
 
+Route::post('/perfil',[
+  'as' => 'perfil_post_path',
+  'uses' => 'FrontController@perfilPost',
+]);
+
 Route::get('/perfil/direccion/nueva',[
   'as' => 'nueva_direccion_path',
   'uses' => 'FrontController@nuevaDireccion',
@@ -88,6 +93,16 @@ Route::get('/perfil/direccion/nueva',[
 Route::get('/perfil/direcciones',[
   'as' => 'direcciones_path',
   'uses' => 'FrontController@direcciones',
+]);
+
+Route::post('/perfil/direccion/nueva',[
+  'as' => 'nueva_direccion_post_path',
+  'uses' => 'FrontController@nuevaDireccionPost'
+]);
+
+Route::post('perfil/direccion/delete',[
+  'as' => 'eliminar_direccion_post_path',
+  'uses' => 'FrontController@deleteAddress'
 ]);
 
 /**

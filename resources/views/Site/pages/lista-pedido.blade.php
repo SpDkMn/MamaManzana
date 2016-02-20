@@ -46,11 +46,17 @@
                     <td class="col-xs-3 col-sm-2 hidden-xs">S/. {{$p->cost}}</td>
                     <td class="col-xs-3 col-sm-2 hidden-xs">S/. {{$p->amount}}</td>
                     <td class="col-xs-2 col-sm-1">
-                      <button type="button" class="btn-remove-product">
-                        <i class="fa fa-times "></i>
-                      </button>
+                      <form action="{{ route('eliminar_direccion_post_path')}}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="shopping_cart_id" value="">
+                        {{ csrf_field() }}
+                        <button type="button" class="btn-remove-product" type="submit">
+                          <i class="fa fa-times"></i>
+                        </button>
+                      </form>
                     </td>
                   </tr>
+
                   @endforeach
                 </tbody>
               </table>

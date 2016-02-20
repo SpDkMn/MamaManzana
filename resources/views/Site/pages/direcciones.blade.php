@@ -15,10 +15,10 @@
       <div class="account-navigation margin-large-top">
         <ul class="account-navigation-ul">
           <li>
-            <a href="perfil.html"><i class="fa fa-user"></i> <span>Mi Perfil</span></a>
+            <a href="{{route('perfil_path')}}"><i class="fa fa-user"></i> <span>Mi Perfil</span></a>
             <ul class="profile-items">
-              <li><a href="perfil.html">Mis datos personales</a></li>
-              <li><a href="direcciones.html">Mis direcciones</a></li>
+              <li><a href="{{route('perfil_path')}}">Mis datos personales</a></li>
+              <li><a href="">Mis direcciones</a></li>
             </ul>
           </li>
           <li>
@@ -32,35 +32,28 @@
         </div>
         <div class="section-content">
           <div class="category-subtitle">
-            <h3>Mis direcciones <a href="agregardirect.html">Agregar dirección</a></h3>
-            <h4>Predeterminada <a href="entrega.html">Cambiar</a></h4>
+            <h3>Mis direcciones <a href="{{route('nueva_direccion_path')}}">Agregar dirección</a></h3>
+            <!--h4>Predeterminada <a href="entrega.html">Cambiar</a></h4-->
           </div>
           <div class="content-direction">
             <ul class="nav nav_direct">
+              @foreach ($addresses as $a)
               <li class="">
-                <p><strong>Antonio Vargas</strong></p>
-                <p>Junin 3168</p>
-                <p>Altura de la Avenida Perú la cuadra 31</p>
-                <p>San Martin de Porres, Lima</p>
-                <p>993305902</p>
-                <a class="btn-remove-address" href="">Eliminar</a>
+                <form action="{{ route('eliminar_direccion_post_path')}}" method="POST">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <input type="hidden" name="address_title" value="{{$a->title}}">
+                  {{ csrf_field() }}
+
+                  <p><strong>{{$a->title}}</strong></p>
+                  <p><strong>{{$a->name_address}} {{$a->last_name_address}}</strong></p>
+                  <p>{{$a->address}}</p>
+                  <p>{{$a->reference}}</p>
+                  <p>{{$a->cities->name}}, {{$a->states->name}}</p>
+                  <p>{{$a->phone}}</p>
+                  <a class="btn-remove-address">Eliminar</a>
+                </form>
               </li>
-              <li class="">
-                <p><strong>Adolfo Vargas</strong></p>
-                <p>Junin 3168</p>
-                <p>Altura de la Avenida Perú la cuadra 31</p>
-                <p>San Martin de Porres, Lima</p>
-                <p>993305902</p>
-                <a class="btn-remove-address" href="">Eliminar</a>
-              </li>
-              <li class="">
-                <p><strong>Pedro Díaz</strong></p>
-                <p>Junin 3168</p>
-                <p>Altura de la Avenida Perú la cuadra 31</p>
-                <p>San Martin de Porres, Lima</p>
-                <p>993305902</p>
-                <a class="btn-remove-address" href="">Eliminar</a>
-              </li>
+              @endforeach
             </ul>
           </div>
         </div>

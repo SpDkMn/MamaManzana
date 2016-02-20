@@ -15,10 +15,10 @@
         <div class="account-navigation margin-large-top">
           <ul class="account-navigation-ul">
             <li>
-              <a href="perfil.html"><i class="fa fa-user"></i> <span>Mi Perfil</span></a>
+              <a href="{{route('perfil_path')}}"><i class="fa fa-user"></i> <span>Mi Perfil</span></a>
               <ul class="profile-items">
-                <li><a href="perfil.html">Mis datos personales</a></li>
-                <li><a href="direcciones.html">Mis direcciones</a></li>
+                <li><a href="{{route('perfil_path')}}">Mis datos personales</a></li>
+                <li><a href="{{route('direcciones_path')}}">Mis direcciones</a></li>
               </ul>
             </li>
             <li>
@@ -31,22 +31,27 @@
             <h2>Mi perfil</h2>
           </div>
           <div class="section-content">
-            <div class="category-subtitle">
-              <h3>Mis direcciones <a href="agregardirect.html">Agregar dirección</a></h3>
-              <h4>Predeterminada <a href="entrega.html">Cambiar</a></h4>
-            </div>
-            <form class="form-add-address" action="">
+            <form class="form-add-address" action="{{ route('nueva_direccion_post_path')}}" method="POST" >
+              {{ csrf_field() }}
+              <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label for="">Nombre de la dirección</label>
+                    <input type="text" class="form-control" name='title'>
+                  </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="">Nombre</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="name_address">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="">Apellido</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="last_name_address">
                   </div>
                 </div>
               </div>
@@ -54,13 +59,13 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="">Teléfono</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="phone">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="">Otro Teléfono</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="other_phone">
                   </div>
                 </div>
               </div>
@@ -68,13 +73,13 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="">Dirección</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="address">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="">Referencia</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="reference">
                   </div>
                 </div>
               </div>
@@ -82,11 +87,11 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="">Distrito</label>
-                    <select name="" id="" class="form-control">
+                    <select name="zona" id="" class="form-control">
                       <option value="">Seleccione</option>
-                      <option value="">Barranco</option>
-                      <option value="">Lince</option>
-                      <option value="">Chorrillos</option>
+                      @foreach($zones as $z)
+                      <option value="{{$z->id}}">{{$z->name}}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>

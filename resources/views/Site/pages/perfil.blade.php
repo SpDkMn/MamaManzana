@@ -17,7 +17,7 @@
               <a href=""><i class="fa fa-user"></i> <span>Mi Perfil</span></a>
               <ul class="profile-items">
                 <li><a href="">Mis datos personales</a></li>
-                <li><a href="">Mis direcciones</a></li>
+                <li><a href="{{route('direcciones_path')}}">Mis direcciones</a></li>
               </ul>
             </li>
             <li>
@@ -33,13 +33,14 @@
             <div class="category-subtitle">
               <h3>Mis Datos Personales</h3>
             </div>
-            <form class="form-profile" action="">
+            <form action="{{ route('perfil_post_path')}}" method="POST"  class="form-profile">
+              {{ csrf_field() }}
               <div class="width-content">
                 <div class="row">
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label for="">Nombre</label>
-                      <input type="text" class="form-control" value="{{Auth::user()->name}}">
+                      <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}">
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
@@ -66,18 +67,13 @@
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label for="">Fecha de nacimiento</label>
-                      <input type="date" class="form-control">
+                      <input type="date" name="date" class="form-control" @if(!is_null(Auth::user()->date)) value="{{Auth::user()->date}}" @endif>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-4">
                     <div class="form-group">
                       <label for="">Email</label>
-                      <input type="email" class="form-control f-email" value="{{Auth::user()->email}}" readonly="readonly">
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-4">
-                    <div class="form-group">
-                      <a class="ch-pass" href="">Cambiar contraseña</a>
+                      <input type="email" class="form-control f-email" name="email" value="{{Auth::user()->email}}" readonly="readonly">
                     </div>
                   </div>
                 </div>
