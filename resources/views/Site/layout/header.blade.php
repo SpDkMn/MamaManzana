@@ -19,7 +19,13 @@ use App\Http\Requests;
             <ul class="nav nav_user">
               @if($currentUser)
                 <li><a href="{{route('perfil_path')}}"><i class="fa fa-user"></i><span class="hidden-xs">{{$currentUser->name}}</span></a></li>
-                <li><a href="{{route('lista_pedido_path')}}"><i class="fa fa-shopping-cart"></i> ({{$sumShoppingCart}}) <span class="hidden-xs">Mi carrito</span></a></li>
+                <li>
+                @if($sumShoppingCart)
+                  <a href="{{route('lista_pedido_path')}}">
+                @else
+                  <a href="#">
+                @endif
+                <i class="fa fa-shopping-cart"></i> ({{$sumShoppingCart}}) <span class="hidden-xs">Mi carrito</span></a></li>
                 <li><a href="{{route('logout_path')}}"><i class="fa fa-sign-out"></i><span class="hidden-xs">Salir</span></a></li>
               @else
                 <li><a href="{{ route('auth.getSocialAuth','facebook')}}"><i class="fa fa-user"></i> <span class="hidden-xs">Iniciar Sesión</span></a></li>
@@ -30,8 +36,10 @@ use App\Http\Requests;
       </div>
     </div>
     <div class="clearfix">
-      <div class="h_logo">
-      </div>
+      <a href="{{route('home_path')}}">
+        <div class="h_logo">
+        </div>
+      </a>
       <div class="nav_color">
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav nav_manzana">

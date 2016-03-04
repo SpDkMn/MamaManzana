@@ -56,15 +56,17 @@ Route::post('contacto',[
   'uses' => 'FrontController@contactPost',
 ]);
 
-Route::post('pedido',[
-  'as' => 'post_pedido_path',
-  'uses' => 'FrontController@postPedido'
-]);
 
 
 /**
  * Middleware de login
  */
+Route::group(['middleware' => 'auth'], function () {
+Route::post('pedido',[
+  'as' => 'post_pedido_path',
+  'uses' => 'FrontController@postPedido'
+]);
+
 Route::get('pedido-lista',[
   'as' => 'lista_pedido_path',
   'uses' => 'FrontController@listaPedido'
@@ -105,27 +107,29 @@ Route::post('perfil/direccion/delete',[
   'uses' => 'FrontController@deleteAddress'
 ]);
 
-/**
- *
- */
+Route::post('ajax/address',[
+  'as' => 'ajax_address_path',
+  'uses' => 'FrontController@ajaxAddress'
+]);
 
-/** ** */
+Route::post('ajax/date',[
+  'as' => 'ajax_date_path',
+  'uses' => 'FrontController@ajaxDate'
+]);
 
-Route::get('/pedidocateg', function () {
-    return view('Site.pages.pedidocateg');
-});
-Route::get('/pedidos', function () {
-    return view('Site.pages.pedidos');
-});
+Route::post('ajax/shopping_cart/product/delete',[
+  'as' => 'ajax_delete_shopping_cart_product_path',
+  'uses' => 'FrontController@ajaxShoppingCartProductDelete'
+]);
 
+Route::post('ajax/shopping_cart/product/update',[
+  'as' => 'ajax_update_shopping_cart_product_path',
+  'uses' =>'FrontController@ajaxShoppingCartProductUpdate'
+]);
 
-Route::get('/producto', function () {
-    return view('Site.pages.producto');
-});
-Route::get('/productos', function () {
-    return view('Site.pages.productos');
-});
+Route::post('checkout',[
+  'as' => 'post_realizar_pedido_path',
+  'uses' => 'FrontController@postCheckout',
+]);
 
-Route::get('/registrate', function () {
-    return view('Site.pages.registrate');
 });

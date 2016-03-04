@@ -50,7 +50,7 @@
                   <p>{{$a->reference}}</p>
                   <p>{{$a->cities->name}}, {{$a->states->name}}</p>
                   <p>{{$a->phone}}</p>
-                  <a class="btn-remove-address">Eliminar</a>
+                  <a class="btn-remove-address" data-id="{{$a->id}}">Eliminar</a>
                 </form>
               </li>
               @endforeach
@@ -61,4 +61,29 @@
     </div>
   </div>
 </section>
+@stop
+
+@section('script3')
+<script>
+  $(function(){
+    $(".btn-remove-address").click(function(e){
+      e.preventDefault();
+      var $id = $(this).data('id');
+      $.ajax({
+        type: "POST",
+        url: '{{route('eliminar_direccion_post_path')}}',
+        data: {id:$id,_token:"<?php echo csrf_token(); ?>"},
+        success: function($data){
+          if($data['result'].localeCompare('success')==0){
+            location.reload();
+          }
+          console.log($data['result']);
+        },
+        dataType: 'json'
+      });
+
+
+    });
+  });
+</script>
 @stop

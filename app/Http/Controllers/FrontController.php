@@ -24,6 +24,10 @@ use MamaManzana\Http\Requests\ProfileEdit as ProfileEdit;
 use MamaManzana\Address as Address;
 use MamaManzana\Zones as Zones;
 use MamaManzana\Http\Requests\AddressCreate as AddressCreate;
+use MamaManzana\Turn as Turn;
+use MamaManzana\Http\Requests\OrderCreate as OrderCreate;
+use MamaManzana\Order as Order;
+use MamaManzana\Status as Status;
 
 class FrontController extends Controller
 {
@@ -150,12 +154,6 @@ class FrontController extends Controller
           ->where('product_id', $producto->id)
           ->where('shopping_cart_id', $cart->id)
           ->increment('count', $request->cantidad);
-        DB::table('products_shopping_carts')
-          ->where('product_id', $producto->id)
-          ->where('shopping_cart_id', $cart->id)
-          ->increment('amount', $producto->cost*$request->cantidad);
-        $cart->sub_total += $producto->cost*$request->cantidad;
-        $cart->save();
         return redirect()->route('lista_pedido_path');
       }
     }
@@ -166,8 +164,6 @@ class FrontController extends Controller
         'cost'=>$producto->cost,
         'amount'=>$producto->cost*$request->cantidad,
     ]);
-    $cart->sub_total += $producto->cost*$request->cantidad;
-    $cart->save();
     return redirect()->route('lista_pedido_path');
   }
 
@@ -177,9 +173,13 @@ class FrontController extends Controller
     $query = DB::table('products_shopping_carts as psc')
       ->join('products as p', 'p.id', '=', 'psc.product_id')
       ->join('products_img as pi', 'p.id', '=', 'pi.product_id')
-      ->select('psc.product_id','psc.count','psc.cost','psc.amount','p.name','p.slug','pi.name as img')
+      ->select('psc.id','psc.product_id','psc.count','psc.cost','psc.amount','p.name','p.slug','pi.name as img')
       ->where('shopping_cart_id',$cart->id)
       ->get();
+    $count = count($query);
+    if($count == 0){
+      return redirect()->back();
+    }
     return view('Site.pages.lista-pedido',['metadata' => $metadata,'productos'=>$query,'cart'=>$cart]);
   }
 
@@ -192,7 +192,12 @@ class FrontController extends Controller
       ->select('psc.product_id','psc.count','psc.cost','psc.amount','p.name','p.slug','pi.name as img')
       ->where('shopping_cart_id',$cart->id)
       ->get();
-    return view('Site.pages.pedidos',['metadata' => $metadata,'productos'=>$query,'cart'=>$cart]);
+    $count = count($query);
+    if($count == 0){
+      return redirect()->back();
+    }
+    $addresses = Address::with('zones')->with('states')->with('cities')->with('countries')->where('user_id',Auth::user()->id)->get();
+    return view('Site.pages.pedidos',['metadata' => $metadata,'productos'=>$query,'cart'=>$cart,'addresses'=>$addresses]);
   }
 
   public function nuevaDireccion(){
@@ -227,6 +232,118 @@ class FrontController extends Controller
   }
 
   public function deleteAddress(Request $request){
-    dd($request);
+    $address = Address::findOrFail($request->id);
+    if($address->delete()){
+      return json_encode(['result'=>'success']);
+    }
+    return json_encode(['result'=>'error']);
+  }
+
+  public function ajaxAddress(Request $request){
+    $address = Address::with([
+        'zones'=>function($query){
+          $query->where('actived',1);
+        },
+        'zones.shippingCosts'=>function($query){
+          $query->where('actived',1);
+        },
+        'states'=>function($query){
+          $query->where('active',1);
+        },
+        'cities'=>function($query){
+          $query->where('active',1);
+        },
+        'countries'=>function($query){
+          $query->where('active',1);
+        }])
+      ->where('user_id',Auth::user()->id)
+      ->where('id',$request->id)
+      ->get();
+    return $address->toJson();
+  }
+
+  public function ajaxDate(Request $request){
+    $dateArr = explode("/", $request->date);
+    $date = date("N", mktime(0, 0, 0, $dateArr[1], $dateArr[0], $dateArr[2]));
+    $count = Turn::where('day',$date)->where('active',1)->count();
+    if($count == 0){
+      return json_encode(['id'=>'-1']);
+    }
+    $turns = Turn::where('day',$date)->where('active',1)->get();
+    return $turns->toJson();
+  }
+
+  public function ajaxShoppingCartProductDelete(Request $request){
+    $query = DB::table('products_shopping_carts')
+      ->where('id',$request->id)
+      ->delete();
+    if($query){
+      return json_encode(['result'=>'success']);
+    }
+    return json_encode(['result'=>'error']);
+  }
+
+  public function ajaxShoppingCartProductUpdate(Request $request){
+    $query = DB::table('products_shopping_carts')
+      ->where('id',$request->id)
+      ->update(['count'=>$request->count]);
+    if($query){
+      return json_encode(['result'=>'success']);
+    }
+    return json_encode(['result'=>'error']);
+  }
+
+  public function postCheckout(OrderCreate $request){
+    $cart = ShoppingCart::findOrFail($request->cart_id);
+    $turn = Turn::findOrFail($request->turn_delivery);
+    $dateArr = explode("/", $request->date_delivery);
+    $address = Address::with(['zones'=>function($query){$query->where('actived',1);},
+        'zones.shippingCosts'=>function($query){$query->where('actived',1);}])
+        ->where('user_id',Auth::user()->id)->where('id',$request->addresses)->firstOrFail();
+
+    if(is_null($request->addresses_delivery)){
+      $address_delivery = $address;
+    }else{
+      $address_delivery = Address::with(['zones'=>function($query){$query->where('actived',1);},
+          'zones.shippingCosts'=>function($query){$query->where('actived',1);}])
+          ->where('user_id',Auth::user()->id)->where('id',$request->addresses_delivery)->firstOrFail();
+    }
+
+    $status = Status::findOrFail('1');
+
+    if(!( ($cart->user_id == $address->user_id) == $address_delivery->user_id)) return "Error";
+
+    $order = new Order;
+
+    $order->user_id = Auth::user()->id;
+    $order->shopping_cart_id = $cart->id;
+    $order->sender_id = $address->id;
+    $order->receiver_id = $address_delivery->id;
+    $order->shipping_cost_id = $address_delivery->zones->shippingCosts->id;
+    $order->status_id = $status->id;
+
+    $order->shipping_cost = $address_delivery->zones->shippingCosts->cost;
+    $order->sub_total = $cart->sub_total;
+    $order->total = $order->shipping_cost+$order->sub_total;
+
+    $order->day = $dateArr[0];
+    $order->month = $dateArr[1];
+    $order->year = $dateArr[2];
+    $order->start_time = $turn->start_time;
+    $order->finish_time = $turn->finish_time;
+
+    $order->save();
+
+    $cart->order = $order->id;
+    $cart->save();
+
+    $metadata = Setting::findOrFail(1);
+    $query = DB::table('products_shopping_carts as psc')
+      ->join('products as p', 'p.id', '=', 'psc.product_id')
+      ->join('products_img as pi', 'p.id', '=', 'pi.product_id')
+      ->select('psc.id','psc.product_id','psc.count','psc.cost','psc.amount','p.name','p.slug','pi.name as img')
+      ->where('shopping_cart_id',$cart->id)
+      ->get();
+    return view('Site.pages.finish',['metadata' => $metadata,'order'=>$order,'productos'=>$query]);
   }
 }

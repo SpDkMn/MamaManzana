@@ -4,8 +4,7 @@ namespace MamaManzana;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Order extends Model
 {
-    protected $table = 'statuses';
-
+    protected $table = 'orders';
 }

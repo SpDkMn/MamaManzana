@@ -52,7 +52,8 @@ class AuthController extends Controller {
               $cart->order = 0;
               $cart->save();
             }
-            return redirect()->back();
+            //return redirect()->back();
+            return redirect()->route('home_path');
         } else {
             return 'something went wrong';
         }

@@ -28,17 +28,13 @@
                         <a class="pull-left" href="#"> <img class="media-object" src="app/img/apple.png" style="width: 32px;"> </a>
                         <div class="media-body">
                           <a class="product-name" href="#">{{$p->name}}</a>
-                          <a class="product-category hidden-xs" href="#">Categoria producto nombre</a>
                           <div class="clearfix">
-                            <select name="cantidad" id="cantidad" class="form-control">
+                            <select name="cantidad-{{$p->id}}" class="form-control select-product-count" data-id="{{$p->id}}">
                               @for($i=1; $i< (($p->count > 11)?($p->count+1) : 11) ; $i++)
                               <option value="{{$i}}" @if($i ==$p->count ) selected @endif>{{$i}}</option>
                               @endfor
                             </select>
                             <span class="visible-xs-inline-block">S/. {{$p->amount}}</span>
-                            <!--button type="button" class="btn-remove-product visible-xs-inline-block">
-                              <i class="fa fa-times "></i>
-                            </button -->
                           </div>
                         </div>
                       </div>
@@ -50,7 +46,7 @@
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="shopping_cart_id" value="">
                         {{ csrf_field() }}
-                        <button type="button" class="btn-remove-product" type="submit">
+                        <button type="button" class="btn-remove-product" type="submit" data-id="{{$p->id}}">
                           <i class="fa fa-times"></i>
                         </button>
                       </form>
@@ -81,30 +77,6 @@
                       </div>
                     </td>
                   </tr>
-                  <!--tr>
-                    <td>
-                      <div class="clearfix">
-                        <div class="pull-left">
-                          Envio
-                        </div>
-                        <div class="pull-right">
-                          S/. 20.00
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="clearfix">
-                        <div class="pull-left">
-                          Total
-                        </div>
-                        <div class="pull-right product-price">
-                          S/. 160.00
-                        </div>
-                      </div>
-                    </td>
-                  </tr-->
                   <tr>
                     <td class="td-button">
                       <a href="{{route('checkout_path')}}" class="btn-send-cart">
@@ -120,4 +92,46 @@
       </div>
     </div>
   </section>
+@stop
+
+@section('script3')
+  <script>
+    $(function(){
+      $('.btn-remove-product').click(
+        function(e){
+          e.preventDefault();
+          var $id = $(this).data("id");
+          $.ajax({
+            type: "POST",
+            url: '{{route('ajax_delete_shopping_cart_product_path')}}',
+            data: {id:$id,_token:"<?php echo csrf_token(); ?>"},
+            success: function($data){
+              if($data['result'].localeCompare('success')==0){
+                location.reload();
+              }
+              console.log($data['result']);
+            },
+            dataType: 'json'
+          });
+      });
+      $(".select-product-count").change(function(e){
+        e.preventDefault();
+        var $id = $(this).data('id');
+        var $count = $(this).val();
+        $.ajax({
+          type: "POST",
+          url: '{{route('ajax_update_shopping_cart_product_path')}}',
+          data: {id:$id,count:$count,_token:"<?php echo csrf_token(); ?>"},
+          success: function($data){
+            if($data['result'].localeCompare('success')==0){
+              location.reload();
+            }
+            console.log($data['result']);
+          },
+          dataType: 'json'
+        });
+
+});
+    });
+  </script>
 @stop
