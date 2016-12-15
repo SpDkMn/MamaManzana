@@ -1,0 +1,32 @@
+body{
+  background: #dcdcdc;
+  color: white;
+}
+.navbar{
+  border-bottom: 0px;
+  background-color: #e5101f;
+  box-shadow: 0 1px 2px #666666;
+  opacity: 0.9;
+}
+.imgJnJ{
+  width: 200px;
+}
+.form-control{
+  border-radius: 0px;
+}
+.panel-body{
+    background: #e5101f;
+}
+.btn-jnj{
+  background-color: white;
+  border-color: white;
+  color: #e5101f;
+  border-radius: 0px;
+  font-weight: bold;
+  margin-bottom: 20px
+}
+.btn-jnj:hover{
+  background-color: #ce969a;
+  border-color: #ce969a;
+  color: #e5101f;
+}

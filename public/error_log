@@ -1,0 +1,26 @@
+[17-Jan-2016 00:35:29 America/Chicago] PHP Warning:  require(/home/mamamanzana/public_html/vendor/barryvdh/laravel-debugbar/src/helpers.php): failed to open stream: No such file or directory in /home/mamamanzana/public_html/vendor/composer/autoload_real.php on line 55
+[17-Jan-2016 00:35:29 America/Chicago] PHP Warning:  require(/home/mamamanzana/public_html/vendor/barryvdh/laravel-debugbar/src/helpers.php): failed to open stream: No such file or directory in /home/mamamanzana/public_html/vendor/composer/autoload_real.php on line 55
+[17-Jan-2016 00:35:29 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home/mamamanzana/public_html/vendor/barryvdh/laravel-debugbar/src/helpers.php' (include_path='.:/opt/php55/lib/php') in /home/mamamanzana/public_html/vendor/composer/autoload_real.php on line 55
+[25-Jan-2016 22:58:53 UTC] PHP Fatal error:  Class 'MamaManzana\Http\Controllers\Mail' not found in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 111
+[02-Feb-2016 03:59:20 UTC] PHP Fatal error:  Class 'MamaManzana\Http\Controllers\ShoppingCart' not found in /home/mamamanzana/public_html/app/Http/Controllers/AuthController.php on line 38
+[02-Feb-2016 03:59:53 UTC] PHP Fatal error:  Class 'MamaManzana\ShoppingCart' not found in /home/mamamanzana/public_html/app/Http/Controllers/AuthController.php on line 39
+[02-Feb-2016 04:23:34 UTC] PHP Fatal error:  Class 'MamaManzana\Composers\ShoppingCart' not found in /home/mamamanzana/public_html/app/Composers/UserComposer.php on line 13
+[02-Feb-2016 05:50:58 UTC] PHP Fatal error:  Cannot use MamaManzana\Product as Product because the name is already in use in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 20
+[02-Feb-2016 05:53:31 UTC] PHP Fatal error:  Class 'MamaManzana\Http\Controllers\DB' not found in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 137
+[02-Feb-2016 06:06:22 UTC] PHP Fatal error:  Call to a member function increment() on a non-object in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 145
+[02-Feb-2016 06:22:36 UTC] PHP Parse error:  syntax error, unexpected 'Route' (T_STRING) in /home/mamamanzana/public_html/app/Http/routes.php on line 71
+[27-Feb-2016 18:49:42 UTC] PHP Parse error:  syntax error, unexpected 'functin' (T_STRING), expecting variable (T_VARIABLE) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 239
+[28-Feb-2016 19:12:40 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 251
+[29-Feb-2016 04:10:41 UTC] PHP Fatal error:  Call to a member function toJson() on a non-object in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 271
+[29-Feb-2016 04:22:26 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 277
+[29-Feb-2016 18:54:26 UTC] PHP Parse error:  syntax error, unexpected 'Route' (T_STRING) in /home/mamamanzana/public_html/app/Http/routes.php on line 132
+[01-Mar-2016 22:47:42 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/mamamanzana/public_html/app/Http/routes.php on line 125
+[03-Mar-2016 17:10:11 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 288
+[03-Mar-2016 17:30:40 UTC] PHP Parse error:  syntax error, unexpected '==' (T_IS_EQUAL) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 293
+[03-Mar-2016 21:32:39 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 178
+[03-Mar-2016 21:33:38 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 178
+[03-Mar-2016 21:33:46 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 178
+[03-Mar-2016 21:33:53 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 178
+[03-Mar-2016 21:34:56 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 181
+[03-Mar-2016 21:35:11 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 181
+[03-Mar-2016 21:35:14 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mamamanzana/public_html/app/Http/Controllers/FrontController.php on line 181

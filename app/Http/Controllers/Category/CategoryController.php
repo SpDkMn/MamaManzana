@@ -115,7 +115,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->short_description = $request->short_description;
         $category->slug = $request->slug;
-        
+
         $category->save();
 
         $categoryMeta = $category->meta;
